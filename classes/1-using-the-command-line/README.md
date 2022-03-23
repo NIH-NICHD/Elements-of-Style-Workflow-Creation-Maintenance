@@ -24,5 +24,5 @@
 
 ## Additional resources:
 
-- Lifebit CloudOS documentation for the JupyterLab interface: https://lifebit.gitbook.io/cloudos/web-interface/jupyter-lab
+- CAVATICA documentation for the JupyterLab interface: https://docs.cavatica.org/docs/editor-quick-reference
 - Official documentation from project JupyterLab: https://jupyterlab.readthedocs.io/en/stable/ 
