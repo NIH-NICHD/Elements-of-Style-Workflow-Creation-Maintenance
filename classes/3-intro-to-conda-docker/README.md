@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/lifebit-ai/jax-jupyter/raw/master/img/cloudos_x_jupy.png"  width="250" align="right" >
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width="100" align="right">
 </p>
 <br/><br/>
 
@@ -12,7 +12,7 @@
 <br/><br/>
 
 
-## Agenda for the day:
+## Agenda for the topic:
 
 <br/><br/>
 
