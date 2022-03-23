@@ -14,22 +14,22 @@ Thank you for being part of this pilot.  We aren't done yet, we will have each o
 ## What we have done
 ## Day 1 
   
-1. We began by introducing you to using [command-line](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/main/classes/1-intro-to-command-line/1-using-the-command-line.ipynb)
-2. We then addressed [reading data and plotting in R](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/1-intro-to-command-line/2-reading-data-and-plotting-in-R.ipynb)
+1. We began by introducing you to using [command-line](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/main/classes/1-intro-to-command-line/1-using-the-command-line.ipynb)
+2. We then addressed [reading data and plotting in R](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/1-intro-to-command-line/2-reading-data-and-plotting-in-R.ipynb)
 
 ## Day 2
 
-1. We discussed version control and introduced you to [Git and GitHub](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/1-why-git-and-setup.md)
-2. Introduced you to [forking a repository and how to push your changes back into a repository](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/2-the-fork-git-routine.ipynb)
-3. Giving you a chance to [add and push your changes back to the main repository](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/3-the-add-push-git-routine.ipynb)
+1. We discussed version control and introduced you to [Git and GitHub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/1-why-git-and-setup.md)
+2. Introduced you to [forking a repository and how to push your changes back into a repository](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/2-the-fork-git-routine.ipynb)
+3. Giving you a chance to [add and push your changes back to the main repository](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/3-the-add-push-git-routine.ipynb)
 
 ## Day 3
-1. We introduced you to [conda for managing your environment and dependencies](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/tree/main/classes/3-intro-to-conda-docker)
-2. We used these environments as we introduced you to [containers](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/3-intro-to-conda-docker/2-build-test-share-reuse-docker.ipynb)
+1. We introduced you to [conda for managing your environment and dependencies](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/tree/main/classes/3-intro-to-conda-docker)
+2. We used these environments as we introduced you to [containers](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/3-intro-to-conda-docker/2-build-test-share-reuse-docker.ipynb)
 
 ## Day 4
 
-We focused the entire day on learning the workflow language [nextflow day](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/4-intro-to-nextflow/nextflow.md)
+We focused the entire day on learning the workflow language [nextflow day](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/4-intro-to-nextflow/nextflow.md)
 
 ## Day 5
 

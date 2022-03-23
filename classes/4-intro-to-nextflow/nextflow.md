@@ -1,6 +1,6 @@
 ## Nextflow
 
-![nextflow_logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/nextflow.png)
+<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png" width="250" align="center">
 
 
 **Main outcome:** *During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) pipeline to learn the basics of Nextflow including:*
@@ -166,7 +166,7 @@ process {
   memory = "2.GB"
 
   withName: fastqc {
-    container = "lifebitai/fastqc"
+    container = "adeslatt/fastqc"
   }
 }
 ```

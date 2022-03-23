@@ -165,8 +165,8 @@ process {
   cpus = 2
   memory = "2.GB"
 
-  withName: fastqc {
-    container = "lifebitai/fastqc"
+  withName: multiqc {
+    container = "ghcr.io/adeslatt/multiqc-docker:main"
   }
 }
 ```
