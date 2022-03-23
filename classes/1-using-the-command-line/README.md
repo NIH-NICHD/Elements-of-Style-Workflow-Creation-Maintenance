@@ -1,17 +1,11 @@
 
-<p align="center">
-  <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/JupyterLabLogoWithName.png"  width="250" align="right" >
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/JupyterLabLogoWithName.png"  width="250">
 </p>
-<br/><br/>
-
 
 # Intro to command line in the JupyterLab interface
-<br/><br/>
-
 
 ## Agenda for Example Volcano Plot:
-
-<br/><br/>
 
 | Time        | Programme       |
 | ----------- | --------------------------------------------------------------------------- |
