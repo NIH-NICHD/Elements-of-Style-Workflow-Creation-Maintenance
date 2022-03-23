@@ -56,13 +56,57 @@ Awesome, your file has just been saved! You can inspect using the `head` command
 
 We will probably need soon `nano` in one of our Git tasks.
 
+### 5. Creating an environment to install packages
 
-## ii) Configuring our GitHub user information
+Not exactly required as the base environment within CAVATICA JupyterLab is already there.
+But as a habit I begin with creating an environment so that I can keep track of what I add.
+
+```bash
+conda create -n eos -y
+```
+
+Then I install two additional things that I use on a regular basis, `GitHub CLI` and `emacs`
+
+```bash
+conda install -c conda-forge gh
+```
+
+```bash
+conda install -c conda-forge emacs
+```
+
+More on `Anaconda` and packages later.
+
+Detailed step by step on how to achieve this is in this `gif`
+[GitHub command line interface](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CondaEnvCreateEOSAndCondaInstallGitHubCLI.gif)
+
+## 8 To Generate your GitHub Personal Authentication Token
+
+You need to have an authentication token to authorize GitHub within the terminal
+
+To generate your own GitHub Personal Authentication Token you perform the following steps:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GeneratingGitHubPersonalAccessTokens.gif">
+
+## 9 Authentication
+
+Now you can authenticate using your personal access tokens from GitHub
+
+```bash
+gh auth login
+```
+
+Will take you through a series of prompts -- this gif shows you the steps.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubAuthLoginFromCommandLine.gif">
+
+
+## 10 Configuring our GitHub user information
 
 To be able to use Git and GitHub from the command line we need to configure the information related to our GitHub user. Let's follow the commands below to set in the workspace the required information.
 
 <!-- #region -->
-### 1. Set user _**name**_
+### a. Set user _**name**_
 
 Replace ` <my github user name>` with your actual GitHub email.
 
@@ -71,7 +115,7 @@ Replace ` <my github user name>` with your actual GitHub email.
 <!-- #endregion -->
 
 <!-- #region -->
-### 2. Set user _**email**_
+### b. Set user _**email**_
 
 Replace `<my email associated with my github user name>` with your actual GitHub email.
 
@@ -81,10 +125,14 @@ Replace `<my email associated with my github user name>` with your actual GitHub
 
 <!-- #endregion -->
 
-### 3. Set preferred file editor eg _**nano**_
+### c. Set preferred file editor eg _**nano**_ or _**emacs**_
 
 
 `git config --global core.editor nano`
+
+If you are like me then 
+
+`git config --global core.editor emacs`
 
 
 ## _Next up: Forking repositories, the git workflow to re-use and extend projects available in GitHub_
