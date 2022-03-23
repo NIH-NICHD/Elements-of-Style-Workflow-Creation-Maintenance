@@ -25,7 +25,7 @@
 
 
 ## Background Information and other Topics of Interest
-|   |   |   | <p align="center"><img src="https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/assets/lifebitCloudOS.png"  width="250" align="right" ></p> |
+|   |   |   | <p align="center"><img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/ac6e614081838736f970653a82865bf5460048ed/assets/NICHD_60Years_Innovation.png"  width="250" align="right" ></p> |
 |---|---|---|---|
 |[Command Line Skills](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/1-using-the-command-line/1-using-the-command-line.ipynb)  | [Reading and Plotting Data in R](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/1-using-the-command-line/2-reading-data-and-plotting-in-R.ipynb) |  [Why Git and GitHub](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/1-why-git-and-setup.md) | [Forking in GitHub](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/2-the-fork-git-routine.ipynb)|
 | [Git Add Git Commit](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/2-intro-to-git-github/3-the-add-push-git-routine.ipynb)| [Nextflow](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/tree/main/classes/4-intro-to-nextflow) | [Nextflow patterns](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/5-running-a-nextflow-analysis/2-nextflow-resources.md) | [Finding Data](https://github.com/lifebit-ai/dry-bench-skills-for-researchers/blob/main/classes/4-intro-to-nextflow/BONUS-Finding-Data.md)  |
