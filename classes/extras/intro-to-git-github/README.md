@@ -1,24 +1,20 @@
-
 <p>
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/JupyterLabLogoWithName.png"  width="250">
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width="250" align="center">
 </p>
 
-# Intro to Git and GitHub
+# Managing software dependencies
+
+[Conda](https://docs.conda.io/en/latest/) and [Docker](https://docs.docker.com/engine/reference/builder/) in the service of `repurposable` scientific workflows
 
 
 ## Agenda for the topic:
 
 | Time        | Programme       |
 | ----------- | --------------------------------------------------------------------------- |
-| 11.30 - 11.35 | 1. [**Why Git and GitHub?** Motivation and set up in the JupyterLab workspace](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/1-why-git-and-setup.md) |
-| 11.35 - 11.40 | 2. [**Git Routine 1**: Reusing an available repository with `fork` and how to keep in sync with parent project](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/2-the-fork-git-routine.ipynb) |
-| 11.40 - 11.45:| 3. [**Git Routine 2**: Extend your current code and use Git, GitHub to keep track of changes and contribute](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-git-github/3-the-add-push-git-routine.ipynb) |
+| 12.05 - 12.30 | 1. [What is Conda, what is Docker and why do I need those for my research?](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/3-intro-to-conda-docker/1-conda-for-managing-dependencies.ipynb) |
+| 12.30 - 13.15 | 2. [Introduction to dependencies management with conda](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/3-intro-to-conda-docker/1-conda-for-managing-dependencies.ipynb)|
+| 13.15 - 13.25 |:coffee: Short break |
+| 13.25 - 14.00:| 3. [Build, test, share and re-use a docker image]https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/3-intro-to-conda-docker/2-build-test-share-reuse-docker.ipynb)|
 
 <br/><br/>                                                     
 
-
-
-## Additional resources:
-
-- GitHub Hello World: https://guides.github.com/activities/hello-world/
-- Happy Git and GitHub for the useR by Jenny Bryan: https://happygitwithr.com/
