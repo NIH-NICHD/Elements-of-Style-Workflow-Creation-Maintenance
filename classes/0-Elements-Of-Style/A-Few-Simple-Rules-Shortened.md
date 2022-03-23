@@ -48,7 +48,3 @@ A pithy phrase or statement is brief but full of substance and meaning
 
 [A Few Simple Rules](https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/lessons/A-Few-Simple-Rules.md)
 
-## Other useful and informative points
-
-[Juptyer Notebooks to Fix the Reproducibility Crisis](https://medium.com/@CH_maria_CH/fixing-the-reproducibility-crisis-in-science-lifebit-cloudos-meets-jupyter-6939a7e9bc77)
-
