@@ -87,5 +87,4 @@ Its lessons are summarized at the end of each section in pithy maxims, such as "
 
 ## Other useful and informative points
 
-[Juptyer Notebooks to Fix the Reproducibility Crisis](https://medium.com/@CH_maria_CH/fixing-the-reproducibility-crisis-in-science-lifebit-cloudos-meets-jupyter-6939a7e9bc77)
 
