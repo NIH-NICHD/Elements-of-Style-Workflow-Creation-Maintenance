@@ -15,7 +15,7 @@
 
 | Time        | Programme       |
 | ----------- | --------------------------------------------------------------------------- |
-| 11.15 - 11.20 | <img src="https://icon-library.com/images/bash-icon/bash-icon-5.jpg"  width="25">  [Useful commands for the command line and introduction to the JupyterLab interface terminal](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/1-using-the-command-line/1-using-the-command-line.md) |
+| 11.15 - 11.20 | <img src="https://icon-library.com/images/bash-icon/bash-icon-5.jpg"  width="25">  [Useful commands for the command line and introduction to the JupyterLab interface terminal](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/1-using-the-command-line/1-using-the-command-line.ipynb) |
 | 11:20 - 11:30| <img src="https://www.r-project.org/logo/Rlogo.svg"  width="25">  [Useful commands to run R code and install required dependencies](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/1-using-the-command-line/2-reading-data-and-plotting-in-R.ipynb)|
 
 <br/><br/>                                                     
