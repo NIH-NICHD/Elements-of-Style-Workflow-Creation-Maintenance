@@ -130,9 +130,22 @@ docker login pgc-images.sbgenomics.com -u deslattesmaysa2 -p [personal authentic
 
 In order to push your image to the repository, the repository location needs to exist.
 
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICANavigateDeveloperDockerRegistry.png">
+</p>
 
+And then create the repository location for its eventual resting place
 
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICADeveloperDockerRepositoryCreateNewRepository.png">
+</p>
 
+## All the commands for Tagging, Pushing and Pulling are provided for you
+
+CAVATICA makes it fairly easy to succeed in putting your own applications on their site.
+
+<p>
+<img src="">
 <br>
 </br>
 
@@ -145,4 +158,5 @@ In order to push your image to the repository, the repository location needs to 
 
 - CAVATICA documentation for the Apps interface: https://docs.cavatica.org/docs/public-apps
 
+- CAVATICA documentation for Docker Basics: http://docs.cavatica.org/docs/docker-basics
  </p>
