@@ -298,3 +298,8 @@ To run the docker container with the current working directory mounted, type the
 ```bash
 docker run --rm -v $PWD:$PWD -w $PWD -it ghcr.io/adeslatt/multiqc-docker:main multiqc --help
 ```
+
+
+## Return to the Agenda
+
+[Main Agenda](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance#readme)
