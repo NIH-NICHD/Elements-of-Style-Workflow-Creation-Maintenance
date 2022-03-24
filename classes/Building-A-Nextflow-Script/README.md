@@ -94,54 +94,7 @@ We can now run this script & set the value of `params.reads` to one of our FASTQ
 nextflow run main.step1.nf --reads testdata/test.20k_reads_1.fastq.gz
 ```
 
-We get an error because we do not have the image available to us -- so we take a small detour
-
-#### Using existing containers from a repository
-
-We will go into more detail in the next session
-
-Navigate to the top of your home directory
-
-```bash
-cd ~
-```
-
-Clone the two containers
-
-```bash
-git clone https://github.com/adeslatt/fastqc-docker.git
-```
-
-and 
-
-```bash
-git clone https://github.com/adeslatt/multiqc-docker.git
-```
-
-#### Build the Fastq image
-
-With the `Dockerfile` from above you might want to run:
-```bash
-cd fastqc-docker
-docker build -t fastqc .
-```
-
-#### Build the multiqc image
-
-Navigate now to multiqc
-
-```bash
-cd ../multiqc-docker
-docker build -t multiqc .
-```
-
-#### Now look at the images we have available to us
-
-what images are available 
-
-```bash
-docker images
-```
+The run returns the name of our file.
 
 #### Recap
 Here we learnt how to define parameters & pass command line arguments to them in Nextflow
@@ -417,6 +370,53 @@ docker build -t fastqc .
 
 Note: don't miss the dot in the above command. When it completes, verify that the image 
 has been created listing all available images: 
+
+```bash
+docker images
+```
+
+#### Using existing containers from a repository
+
+We will go into more detail in the next session
+
+Navigate to the top of your home directory
+
+```bash
+cd ~
+```
+
+Clone the two containers
+
+```bash
+git clone https://github.com/adeslatt/fastqc-docker.git
+```
+
+and 
+
+```bash
+git clone https://github.com/adeslatt/multiqc-docker.git
+```
+
+#### Build the Fastq image
+
+With the `Dockerfile` from above you might want to run:
+```bash
+cd fastqc-docker
+docker build -t fastqc .
+```
+
+#### Build the multiqc image
+
+Navigate now to multiqc
+
+```bash
+cd ../multiqc-docker
+docker build -t multiqc .
+```
+
+#### Now look at the images we have available to us
+
+what images are available 
 
 ```bash
 docker images
