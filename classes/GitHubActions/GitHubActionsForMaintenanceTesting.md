@@ -58,7 +58,10 @@ This means that we are in a way, using GitHub actions as a complier for our imag
 
 The STAR docker is the simplest of containers.  Why we would do so is that one can imagine scaling to 100s to 1000s of files that need to be aligned with STAR.  The smaller the image, the smaller the machine that could be used to execute that image.   Food for thought as we continue to scale.
 
-<img src=https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/assets/MakingGitHubActionsWithStar-Docker.gif width=650 align="left">
+<p>
+<img src=https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/assets/MakingGitHubActionsWithStar-Docker.gif >
+</p>
+
 
 
 ## Return to the Agenda
