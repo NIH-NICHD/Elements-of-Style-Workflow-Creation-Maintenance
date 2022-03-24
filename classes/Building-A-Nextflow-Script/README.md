@@ -1,9 +1,10 @@
 # Nextflow Tutorial
+
 Tutorial for INCLUDE Workshop, on 23 March 2022, covering Nextflow, containers and CAVATICA
 
 In this tutorial you will learn:
 - [Nextflow](https://www.nextflow.io/) - how to build parallelisable & scalable computational pipelines
-- [Docker](https://www.docker.com/)
+- [Docker](https://www.docker.com/) - how to use Docker containers - which we will show in the next hour how to build
 
 ## Contents
 
@@ -14,21 +15,27 @@ In this tutorial you will learn:
     - [d) Channels](#d-channels)
     - [e) Operators](#e-operators)
     - [f) Configuration](f-configuration)
-- [Session 2: Docker](#session-2-docker)
-    - [a) Running images](#a-running-images)
-    - [b) Dockerfiles](#b-dockerfiles)
-    - [c) Building images](#c-building-images)
-    - [d) BONUS: Upload the container to Docker Hub](#d-bonus-upload-the-container-to-docker-hub)
-- [Session 4: Running Nextflow Pipelines on The Cloud on Deploit](#session-4-running-nextflow-pipelines-on-the-cloud-on-deploit)
-    - [a) Creating an account](#a-creating-an-account)
-    - [b) Importing a Nextflow pipeline on CAVATICA](#b-importing-a-nextflow-pipeline-on-cavatica)
-    - [c) Running the pipeline](#c-running-the-pipeline)
-    - [d) Monitoring an analysis](#d-monitoring-an-analysis)
-
+    
 ## Setup
-So that you have the `testdata` within the repository it is recommended that you clone this reposiotry. To do this open a terminal & enter the following:
-```
-git clone https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance.git
+
+We are going to use [Google Shell Cloud] to walk through the building of a Nextflow script and in the next session building the containers we used to do so.
+
+### Logging into [Google shell Cloud](https://shell.cloud.google.com/)
+
+[Google shell cloud](https://shell.cloud.google.com/) is an ephemeral machine, but has a number of items installed that makes it easier for us to go through this exercise.
+
+* `Docker` is installed
+
+* `Nextflow` can be installed
+
+In the last session we went through some basic command line skills and there are links in the course material for you to be able to go back and review.
+
+Let's begin:  In your web browser (Chrome preferred) - navigate to (https://shell.cloud.google.com)
+
+
+
+```bash
+git clone https://github.com/adeslatt/Elements-of-Style-Workflow-Creation-Maintenance.git
 && cd Elements-of-Style-Workflow-Creation-Maintenance
 ```
 
