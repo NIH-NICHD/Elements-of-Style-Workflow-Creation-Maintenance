@@ -31,7 +31,43 @@ Your landing page is the dashboard - from there you can login to CAVATICA
 
 In your browser navigate to "https://cavatica.sbgenomics.com"
 
-Login here 
+Login here:
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAERACommonsLoginGen3Authorize.gif">
+</p>
+
+You are then in an environment where you can see a number of things including `public` and `developer` tabs
+
+
+## Developer Authentication Token
+
+As in all things these days, to push or at times use (if your application is private) applications you have in the repository - you will need to authenticate with your personal authentication token.  You should not share your token with others.
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateDeveloperAuthenticationToken.gif">
+</p>
+
+## Copying Public Apps to your Project
+
+To use an application within your project, you need to copy that application to your project
+
+In this example, the user navigated through the public apps looking for the FastQC analysis application and copied it to the `Elements of Style` project workspace.
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACopyPublicFastqcAppToProjectWorkspace.gif">
+</p>
+
+## Using the application
+
+Data are required and the same files that were used in the Nextflow workflow example were copied up onto the CAVATICA workspace.
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAFastQCAnalysisRun.gif">
+</p>
+
+Then the analysis was run and we can view the resulting files in the same way that you can view the results of the execution example ran on the Google Shell Cloud -- but we are in a workspace now where we can have a large number of machines running in parallel.   There are limits of course, and depending upon the analysis these limits can be discussed -- because the important things is to get the Science done properly and efficiently.
+
 
 
 ## Navigate to Elements of Style Project Workspace
