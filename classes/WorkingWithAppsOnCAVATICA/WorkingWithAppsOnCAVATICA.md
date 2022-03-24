@@ -145,7 +145,7 @@ And then create the repository location for its eventual resting place
 CAVATICA makes it fairly easy to succeed in putting your own applications on their site.
 
 <p>
-<img src="">
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICADockerRepositoryLoginPushPullCommands.png">
 <br>
 </br>
 
