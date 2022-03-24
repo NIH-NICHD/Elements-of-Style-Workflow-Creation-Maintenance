@@ -110,7 +110,7 @@ and finally the command [script](https://www.nextflow.io/docs/latest/process.htm
 
 In our main script we want to add the following:
 ```nextflow
-//mainf.nf
+//main.step2.nf
 reads = file(params.reads)
 
 process fastqc {
@@ -130,6 +130,12 @@ process fastqc {
 }
 ```
 
+This file is also in our repository and we can inspect it from the command line
+
+```bash
+less main.step2.nf
+```
+
 Here we created the variable `reads` which is a `file` from the command line input.
 
 We can then create the process `fastqc` including:
@@ -140,8 +146,10 @@ We can then create the process `fastqc` including:
 
 We can then run our script with the following command:
 ```bash
-nextflow run main.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+nextflow run main.step2.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
+
+We are using the image I had pushed to the Seven Bridges Image repository -- in the next session I will walk through how that is done.
 
 By running Nextflow using the `with-docker` flag we can specify a Docker container to execute this command in. This is beneficial because it means we do not need to have `fastqc` installed locally on our laptop. We just need to specify a Docker container that has `fastqc` installed.
 
@@ -168,7 +176,7 @@ process fastqc {
 
     tag "$name"
     publishDir "results", mode: 'copy'
-    container 'flowcraft/fastqc:0.11.7-1'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
 
     input:
     set val(name), file(reads) from reads
@@ -187,7 +195,7 @@ The `reads` variable is now equal to a channel which contains the reads prefix &
 
 To run the pipeline:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
 #### Recap
@@ -208,7 +216,7 @@ process fastqc {
 
     tag "$name"
     publishDir "results", mode: 'copy'
-    container 'flowcraft/fastqc:0.11.7-1'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
 
     input:
     set val(name), file(reads) from reads
@@ -224,7 +232,7 @@ process fastqc {
 process multiqc {
 
     publishDir "results", mode: 'copy'
-    container 'ewels/multiqc:v1.7'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0'
 
     input:
     file ('fastqc/*') from fastqc_results.collect()
@@ -244,7 +252,7 @@ Here we have added another process `multiqc`. We have used the `collect` operato
 
 The pipeline can be run with the following:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker flowcraft/fastqc:0.11.7-1
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
 #### Recap
@@ -264,10 +272,10 @@ process {
   memory = "2.GB"
 
   withName: fastqc {
-    container = "flowcraft/fastqc:0.11.7-1"
+    container = "pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0"
   }
   withName: multiqc {
-    container = "ewels/multiqc:v1.7"
+    container = "pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.07"
   }
 }
 ```
@@ -285,7 +293,7 @@ Launching a BASH shell in the container allows you to operate in an interactive 
 in the containerised operating system. For example: 
 
 ```
-docker run -it flowcraft/fastqc:0.11.7-1 bash 
+docker run -it pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 bash 
 ``` 
 
 Once the container is launched you will notice that's running as root (!). 
@@ -308,7 +316,7 @@ echo $PWD
 Next we will run in an interactive mode but mounting our directory
 
 ```bash
-docker run -it -v $PWD:$PWD -w $PWD flowcraft/fastqc:0.11.7-1 fastqc -h
+docker run -it -v $PWD:$PWD -w $PWD pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 fastqc -h
 ```
 
 In this way we are running the command as if we had locally installed it -- which is great for debugging one process at a time.
