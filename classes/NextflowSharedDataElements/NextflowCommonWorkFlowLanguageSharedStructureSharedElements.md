@@ -27,3 +27,7 @@ The Common Workflow language has the same structure as nextflow:
 
 ## [Containers](https://www.commonwl.org/user_guide/07-containers/index.html)
 
+
+## Return to the Agenda
+
+[Main Agenda](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance#readme)
