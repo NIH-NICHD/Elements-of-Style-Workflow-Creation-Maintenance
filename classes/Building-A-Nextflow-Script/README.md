@@ -36,7 +36,7 @@ Let's begin:  In your web browser (Chrome preferred) - navigate to (https://shel
 
 ```bash
 git clone https://github.com/adeslatt/Elements-of-Style-Workflow-Creation-Maintenance.git
-&& cd Elements-of-Style-Workflow-Creation-Maintenance
+cd Elements-of-Style-Workflow-Creation-Maintenance
 ```
 
 ## Session 1: Nextflow
@@ -270,53 +270,7 @@ The pipeline can now be run with the following:
 nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
 ```
 
-#### Recap
-Here we learnt how to use configuration files to set parameters, resources & containers
-
-### g) BONUS: Running with Singularity
-
-Singularity is an alternative container engine to Docker. You may consider using it because it can be run with unprivileged permissions, as it's more suited for HPCs or because your organisation forces you to...
-
-To run the Nextflow pipeline with Singularity instead of Docker you simply need to change one line in the configuration file eg [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file). This works because Nextflow is able to pull images from any Docker register, for example DockerHub in this case.
-
-Rather than using `docker.enabled = true` your `nextflow.config` file should contain:
-```
-singularity.enabled = true
-```
-
-If you have [Singularity](https://sylabs.io/singularity/) installed you can the pipeline with the same command as before:
-```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
-```
-
-#### Recap
-Here we learnt how to run our [Nextflow pipeline with Singularity]((https://www.nextflow.io/docs/latest/singularity.html)) instead of Docker.
-
-<br />
-
-## Session 2: Docker
-
-![docker logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/docker.gif)
-
-What is Docker? Why use it? [Read more about Docker here](https://docs.docker.com/get-started/)
-
-**Main outcome:** *During this session, you will learn how to build & run your own Docker container to bundle dependencies for FastQC & MultiQC*
-
-### a) Running images
-
-Running a container is as easy as using the following command: 
-
-```bash
-docker run <container-name> 
-```
-
-For example: 
-
-```bash
-docker run hello-world  
-```
-
-#### Run a container in interactive mode 
+#### Run a container in interactive mode using bash
 
 Launching a BASH shell in the container allows you to operate in an interactive mode 
 in the containerised operating system. For example: 
@@ -329,6 +283,26 @@ Once the container is launched you will notice that's running as root (!).
 Use the usual commands to navigate in the file system.
 
 To exit from the container, stop the BASH session with the `exit` command.
+
+#### Run a container in interactive mode mounting local directory
+
+One can run a container also from the command line - mounting the current directory.
+
+Mounting means that we are making the directory we are in available to the container.
+
+To do this we can do as follows - first define an environment variable for convenience
+
+```bash
+PWD=$(pwd)
+echo $PWD
+``` 
+Next we will run in an interactive mode but mounting our directory
+
+```bash
+docker run -it -v $PWD:$PWD -w $PWD flowcraft/fastqc:0.11.7-1 fastqc -h
+```
+
+In this way we are running the command as if we had locally installed it -- which is great for debugging one process at a time.
 
 ### b) Dockerfiles
 
@@ -349,19 +323,32 @@ Then use your favourite editor eg. `vim` to create a file named `Dockerfile` and
 following content: 
 
 ```Dockerfile
-FROM nfcore/base
+# Full contents of Dockerfile
 
-LABEL authors="phil@lifebit.ai" \
-      description="Docker image containing fastqc & multiqc for JAX workshop"
+FROM continuumio/miniconda3
+LABEL description="Base docker image with conda and util libraries"
+ARG ENV_NAME="fastqc"
 
-RUN conda config --add channels defaults
-RUN conda config --add channels conda-forge
-RUN conda config --add channels bioconda
+# Install the conda environment
+COPY environment.yml /
+RUN conda env create --quiet --name ${ENV_NAME} --file /environment.yml && conda clean -a
 
-RUN conda install -c bioconda fastqc=0.11.8 && \
-    conda install -c bioconda multiqc=1.7
+# Add conda installation dir to PATH (instead of doing 'conda activate')
+ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
 ```
 
+Notice that this Docker file uses a file called `environment.yml`. 
+
+You can edit this file in an editor and make a file called `environment.yml` and make sure it is in the same directory
+
+```environment.yml
+name: fastqc
+channels:
+  - bioconda
+  - defaults
+dependencies:
+  - fastqc
+```
 When done save the file. 
 
 ### c) Building images
@@ -369,7 +356,7 @@ When done save the file.
 Build the Docker image by using the following command: 
 
 ```bash
-docker build -t my-image .
+docker build -t fastqc .
 ```
 
 Note: don't miss the dot in the above command. When it completes, verify that the image 
@@ -379,284 +366,54 @@ has been created listing all available images:
 docker images
 ```
 
-#### For example:
+#### Using existing containers from a repository
+
+We will go into more detail in the next session
+
+Navigate to the top of your home directory
+
+```bash
+cd ~
+```
+
+Clone the two containers
+
+```bash
+git clone https://github.com/adeslatt/fastqc-docker.git
+```
+
+and 
+
+```bash
+git clone https://github.com/adeslatt/multiqc-docker.git
+```
+
+#### Build the Fastq image
+
 With the `Dockerfile` from above you might want to run:
 ```bash
-docker build -t lifebitai/jax-workshop .
+cd fastqc-docker
+docker build -t fastqc .
 ```
 
-![conda](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/conda.png)
+#### Build the multiqc image
 
-And then you can enter inside the container to check everything is working:
+Navigate now to multiqc
+
 ```bash
-docker run -it lifebitai/jax-workshop:latest bash
+cd ../multiqc-docker
+docker build -t multiqc .
 ```
 
-The container can be used in our Nextflow pipeline replacing the two different containers we currently have because it has both `fastqc` & `multiqc` installed
+#### Inspect what images you have now available to you
 
+You can see what you have built -- and see that we have `tag`ged our files in a certain way
 
-### d) BONUS: Upload the container to Docker Hub
-
-Publish your container in Docker Hub to share it with other people. 
-
-Create an account in the https://hub.docker.com web site. Then from your shell terminal run 
-the following command, entering the user name and password you specified registering in the Hub: 
-
-```
-docker login 
-``` 
-
-Tag the image with your Docker user name account: 
-
-```
-docker tag my-image <user-name>/my-image 
-```
-
-Finally, push it to the Docker Hub:
-
-```
-docker push <user-name>/my-image 
-```
-
-After that anyone will be able to download it by using the command: 
-
-```
-docker pull <user-name>/my-image 
-```
-
-Note how after a pull and push operation, Docker prints the container digest number e.g. 
-
-```
-Digest: sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
-Status: Downloaded newer image for nextflow/rnaseq-nf:latest
-```
-
-This is a unique and immutable identifier that can be used to reference container image 
-in a univocally manner. For example: 
-
-```
-docker pull nextflow/rnaseq-nf@sha256:aeacbd7ea1154f263cda972a96920fb228b2033544c2641476350b9317dab266
-```
-
-<br />
-
-## Session 3: FlowCraft
-
-![flowcraft logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/flowcraft.png)
-
-What is FlowCraft? Why use it? 
-[See FlowCraft slides](https://slides.com/diogosilva-1/deck-7/#/)
-
-**Main outcome:** *During this session, you will learn how to build your own Fastqc FlowCraft component & GATK pipeline*
-
-### a) Installation
-
-FlowCraft is available to install via both Conda & Pip. However, as we are going to building components we want to install the development version. This can be done with the following commands:
 ```bash
-git clone https://github.com/assemblerflow/flowcraft.git
-cd flowcraft
-
-virtualenv philisawesome
-source philisawesome/bin/activate
-
-python3 setup.py install
+docker images
 ```
 
-Now if we add the directory containing `flowcraft.py` to our path, we can then build a pipeline from any directory, eg:
-```bash
-cd flowcraft
-export PATH=$PATH:$PWD
-```
+The containers can be used in our Nextflow pipeline replacing the two different containers we currently have because it has both `fastqc` & `multiqc` installed
 
-### b) How to build a FlowCraft Component
-FlowCraft allows you to build pipelines from components. In order to create a new Component, two files are required. These are the template & the class.
 
-### i. Templates
-Inside of the `flowcraft` directory, create & open a new [file](https://github.com/assemblerflow/flowcraft/commit/7a4575bc0fab7c54d7f427805dff5b47ef0a666b) `flowcraft/generator/templates/fastqc2.nf` in your favourite code editor:
-```nextflow
-process fastqc2_{{ pid }} {
 
-    {% include "post.txt" ignore missing %}
-
-    tag { sample_id }
-    publishDir "results/fastqc2_{{ pid }}", mode: 'copy'
-
-    input:
-    set sample_id, file(fastq_pair) from {{ input_channel }}
-
-    output:
-    file "*_fastqc.{zip,html}" into {{ output_channel }}
-    {% with task_name="fastqc2" %}
-    {%- include "compiler_channels.txt" ignore missing -%}
-    {% endwith %}
-
-    script:
-    """
-    fastqc $fastq_pair
-    """
-}
-
-{{ forks }}
-```
-
-This is standard Nextflow code which is used as a template. Any code in the double curley brackets `{{}}` is FlowCraft code which will be replaced when building pipelines.
-
-### ii. Classes
-
-Inside of the `flowcraft` directory, open & add the following [changes](https://github.com/assemblerflow/flowcraft/commit/43d9ffdb7b1ca5c9e65a4444356cdc7c6bdae404) to the file `flowcraft/generator/components/reads_quality_control.py` in your favourite code editor:
-
-```python
-class Fastqc2(Process):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-        self.input_type = "fastq"
-        self.output_type = "html"
-
-        self.directives = {"fastqc2": {
-            "cpus": 2,
-            "memory": "'4GB'",
-            "container": "flowcraft/fastqc",
-            "version": "0.11.7-1"
-        }}
-
-        self.status_channels = [
-            "fastqc2"
-        ]
-```
-
-Here we set the following:
-- the **inputs & outputs** which allows processes to be connected
-- the **parameters** required by the process (none in this case)
-- the **directives** for the process, including the docker container we want to use. Here the `version` is the `tag` of the docker container
-- the **status channels** for the process to log its status
-
-### c) Building a pipeline with FlowCraft
-
-Now we can test the component we have built with the commands:
-```bash
-mkdir fc_test && cd fc_test
-flowcraft.py build -t "fastqc2" -o fastqc.nf
-```
-
-This will create a Nextflow script `fastqc.nf`. **Be careful which directory you run this command it will populate the folder with lots of files.**
-
-More complex pipelines such as a GATK pipeline can be built with one command:
-```bash
-flowcraft.py build -t "bwa mark_duplicates haplotypecaller" -o main.nf --merge-params
-```
-
-Here the `merge-params` flag is used to merges all parameters with the same name in a single parameter
-
-<br />
-
-## Session 4: Running Nextflow Pipelines on The Cloud on Deploit
-
-![deploit logo](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit.png)
-
-**Main outcome:** *During this session, you will learn how to scale the GATK pipeline you built in the previous session to run an analysis on the Cloud using the Deploit platform.*
-
-[Deploit](https://lifebit.ai/deploit) is a bioinformatics platform, developed by Lifebit, where you can run your analysis over the Cloud/AWS.
-
-### a) Creating an account
-First, create an account/log in [here](https://deploit.lifebit.ai/register). For the purposes of this worksop you can setup a Deploit account with $10 free credit. After this workshop you may choose to connect your cloud account to access your own data & compute
-
-![create_deploit_account](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/create_deploit_account.png)
-
-### b) Importing a Nextflow pipeline on Deploit
-
-We are able to import the GATK pipeline we created with FlowCraft from the previous section (Session 3) on Deploit. This will enable us to scale our analyses. All we need to import a pipeline is the URL from GitHub. For simplicity, we have already created a GitHub repository for the pipeline here: https://github.com/lifebit-ai/gatk-flowcraft
-
-To import the pipeline we must first navigate to the pipelines page. This can be found in the navigation bar on the left-hand-side:
-
-![deploit_pipelines](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/deploit_pipelines.png)
-
-To then import the pipeline you need to:
-- Click the green `New` button
-- `Select` the GitHub icon to import the Nextflow pipeline from GitHub
-- Paste the URL of our pipeline [`https://github.com/lifebit-ai/gatk-flowcraft`](https://github.com/lifebit-ai/gatk-flowcraft)
-- Name our pipeline, eg `gatk-flowcraft`
-- (Optional:) enter a pipeline description
-- Click `Next` & `Create pipeline` :tada:
-
-![import_pipeline.gif](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/import_pipeline.gif)
-
-
-### c) Running the pipeline
-
-Pipelines can be run in three simple steps:
-1. Select the pipeline
-2. Select data & parameters
-3. Run the analysis
-
-#### i. Selecting the pipeline
-Once the pipeline is imported it will automatically be selected.
-
-Alternatively, you can navigate to the pipelines page. Where you can find the imported pipeline under `MY PIPELINES & TOOLS`. To select the pipeline you need to click the card for the pipeline.
-
-![my_pipelines](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/my_pipelines.png)
-
-#### ii. Selecting the data & parameters
-
-The pipeline requires three parameters to be set. These are:
-- `fastq` - paired-end reads to be analysed in `fastq.gz` format
-- `reference` - name of reference genome `fasta`, `fai` & `dict` files
-- `intervals` - `interval_list` file to specify the regions to call variants in
-
-To select the data & parameters you must:
-- Click the green plus to add more lines to for two additional parameters
-- Specify the parameter names for `fastq`, `reference` & `intervals`
-- Import the testdata. This has already been added to the AWS S3 bucket `s3://lifebit-featured-datasets/hackathon/gatk-flowcraft` (although you can also upload files from your local machine via the web interface)
-- Once the testdata has been imported you must specify the values for each parameter:
-    - `fastq` use the blue plus button to `Choose` the imported folder & click `+Regex` & type `*{1,2}.fastq.gz`
-    - `reference` you can also use strings to specify the location. Set the reference to `s3://ngi-igenomes/igenomes/Homo_sapiens/GATK/GRCh37/Sequence/WholeGenomeFasta/human_g1k_v37_decoy`
-    - `intervals` click the blue plus again & select the `GRCh37WholeGenome.interval_list` file within the imported folder
-- Finally, click `Next`
-
-See below for all of the steps:
-
-![select_data_params](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/select_data_params.gif)
-
-#### iii. Run the job - selecting the project & resources
-
-Select a project & instance:
-
-Before running the job you must:
-1. Select the project (which is like a folder used to group multiple analyses/jobs). You can select the already created `Demo` project
-2. Choose the instance to set the compute resources such as CPUs & memory. Here you can select `Dedicated Instances` > 16 CPUs > `c4.4xlarge`
-3. Finally, click `Run job`
-
-![run_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/run_job.gif)
-
-### d) Monitoring an analysis
-
-To monitor jobs you can click on the row for any given job. Immediately after running a job its status will be initialising. This is where AWS in launching the instance. This normally occurs for ~5mins before you are able to view the progress of the job. 
-
-Once on the job monitor page, you can see the progress of the job update in real time. Information such as the resources i.e. memory & CPUs is displayed. Once the job has finished the results can be found in the results tab as well as any reports for select pipelines.
-
-![monitor_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/monitor_job.gif)
-
-You can view a successfully completed example job [here](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba):
-
-[![shared_job](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/shared_job.png)](https://staging.lifebit.ai/public/jobs/5d0534f3ee251700be6884ba)
-
-### Thanks for taking part
-
-Well done you survived! You’ve made it to the end of the workshop tutorial. You’ve learned about the magic of Nextflow, containers, Flowcraft & Deploit. You can now go out & analyse all the things.
-
-![all_the_things](https://raw.githubusercontent.com/PhilPalmer/lbf-hack-tutorial/master/images/all_the_things.jpg)
-
-Hope you enjoyed the conference & let us know if you have any [feedback](https://forms.gle/u78r5byJeZENbKdF8) or questions.
-
-Is there anything we could have improved on? It would be much appreciated if you could fill out this [feedback form](https://forms.gle/u78r5byJeZENbKdF8). For any questions please email phil@lifebit.ai
-
-## Credits
-
-Credits to [Jackson Labs](https://www.jax.org/) & [Anne Deslattes Mays](https://github.com/adeslatt) for hosting us & organising the event.
-
-Credits to [Lifebit](https://lifebit.ai/) for preparing & presenting the workshop.
-
-Many thanks to everyone who helped out along the way, including (but not limited to): 
-@ODiogoSilva, @cgpu, @clairealix, @cimendes & @pprieto
-
-Thanks to everyone involved in the [nf-hack17-tutorial](https://github.com/nextflow-io/nf-hack17-tutorial) which was heavily used as inspiration for this tutorial
