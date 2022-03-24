@@ -53,13 +53,11 @@ cd Elements-of-Style-Workflow-Creation-Maintenance
 
 
 ### a) Installation
-### i. Installing Nextflow
-You will need to have Java 8 or later installed for Nextflow to work. You can check your version of Java by entering the following command:
-```bash
-java -version
-```
 
-If you have [Conda](https://docs.conda.io/en/latest/) installed then you can run the following to install Nextflow:
+Within the Google Cloud Shell we have all but Nextflow available to us.
+
+Conda is installed so we can use the conda install process to install nextflow
+
 ```bash
 conda install -c bioconda nextflow
 ```
