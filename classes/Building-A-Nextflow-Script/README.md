@@ -66,8 +66,19 @@ conda install -c bioconda nextflow
 
 Now that we have Nextflow & Docker installed we're ready to run our first script
 
-1. Create a file `main.step1.nf` & open this in your favourite code/text editor eg VSCode or vim
-2. In this file write the following:
+Normally, you begin by creating a file, for our lesson we are going to use a file that has already been created on your behalf.   We will go through this file and understand its content.
+
+But in general these files are edited with your favorite your favourite code/text editor eg VSCode or vim or emacs
+
+Inspect the file `main.step1.nf`
+
+Typing 
+
+```bash
+less main.step1.nf
+```
+
+You see the contents of the file is as follows:
 ```nextflow
 // main.step1.nf
 params.reads = false
@@ -79,11 +90,58 @@ The first line initialises a new variable (`params.reads`) & sets it to `false`
 The second line prints the value of this variable on execution of the pipeline.
 
 We can now run this script & set the value of `params.reads` to one of our FASTQ files in the testdata folder with the following command:
-```
-nextflow run main.nf --reads testdata/test.20k_reads_1.fastq.gz
+```bash
+nextflow run main.step1.nf --reads testdata/test.20k_reads_1.fastq.gz
 ```
 
-This should return the value you passed on the command line
+We get an error because we do not have the image available to us -- so we take a small detour
+
+#### Using existing containers from a repository
+
+We will go into more detail in the next session
+
+Navigate to the top of your home directory
+
+```bash
+cd ~
+```
+
+Clone the two containers
+
+```bash
+git clone https://github.com/adeslatt/fastqc-docker.git
+```
+
+and 
+
+```bash
+git clone https://github.com/adeslatt/multiqc-docker.git
+```
+
+#### Build the Fastq image
+
+With the `Dockerfile` from above you might want to run:
+```bash
+cd fastqc-docker
+docker build -t fastqc .
+```
+
+#### Build the multiqc image
+
+Navigate now to multiqc
+
+```bash
+cd ../multiqc-docker
+docker build -t multiqc .
+```
+
+#### Now look at the images we have available to us
+
+what images are available 
+
+```bash
+docker images
+```
 
 #### Recap
 Here we learnt how to define parameters & pass command line arguments to them in Nextflow
@@ -364,44 +422,6 @@ has been created listing all available images:
 docker images
 ```
 
-#### Using existing containers from a repository
-
-We will go into more detail in the next session
-
-Navigate to the top of your home directory
-
-```bash
-cd ~
-```
-
-Clone the two containers
-
-```bash
-git clone https://github.com/adeslatt/fastqc-docker.git
-```
-
-and 
-
-```bash
-git clone https://github.com/adeslatt/multiqc-docker.git
-```
-
-#### Build the Fastq image
-
-With the `Dockerfile` from above you might want to run:
-```bash
-cd fastqc-docker
-docker build -t fastqc .
-```
-
-#### Build the multiqc image
-
-Navigate now to multiqc
-
-```bash
-cd ../multiqc-docker
-docker build -t multiqc .
-```
 
 #### Inspect what images you have now available to you
 
