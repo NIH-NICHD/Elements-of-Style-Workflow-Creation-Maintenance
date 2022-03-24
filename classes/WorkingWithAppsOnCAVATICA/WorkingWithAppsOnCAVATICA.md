@@ -69,10 +69,67 @@ Data are required and the same files that were used in the Nextflow workflow exa
 Then the analysis was run and we can view the resulting files in the same way that you can view the results of the execution example ran on the Google Shell Cloud -- but we are in a workspace now where we can have a large number of machines running in parallel.   There are limits of course, and depending upon the analysis these limits can be discussed -- because the important things is to get the Science done properly and efficiently.
 
 
-
 ## Navigate to Elements of Style Project Workspace
 
 You all have been invited into my project workspace so that you can have access to the items and work that we walked through today.
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAElementsOfStyleDashboard.png">
+</p>
+
+## Inspect the tabs and head to the Task Tab
+
+You can also head over and see what tasks have been run (both successful and unsuccessful)
+
+<p>
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAElementsofStyleTasksRun.png">
+</p>
+
+## So how to load your own App
+
+We just illustrated how to build your single process container with Docker within the Google Shell environment.
+
+With every container there are three steps
+
+1. Build - done with:
+
+```bash
+docker build -t my-tag .
+```
+
+2. Tag
+
+If the image is not tagged with the appropriate name for the destination registry, you have to tag it again.
+```bash
+docker tag [image] [pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+```
+
+3. Push
+
+To be used the image needs to be in a repository.
+
+This is how the apps were tagged here:
+<p> 
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICADockerRegistryTagPushFromGoogleShellFastqc.gif">
+</p>
+
+## Before you can create a location for the app you need an Authentication Token
+
+This bears repeating as all the work is done with the Authentication Token
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateDeveloperAuthenticationToken.gif">
+
+Before you can do the `Push` step, you will also need to know how to login.  
+The CAVATICA platform makes it pretty easy, you have to copy the commands to allow you to authenticate with your user name and your personal authentication token
+
+```bash
+docker login pgc-images.sbgenomics.com -u deslattesmaysa2 -p [personal authentication token]
+```
+
+## Before we upload an app we need to create a space for it
+
+In order to push your image to the repository, the repository location needs to exist.
+
 
 
 
