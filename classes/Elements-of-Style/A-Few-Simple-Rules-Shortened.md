@@ -9,7 +9,7 @@
 
 The views expressed in this course represent the views of Anne Deslattes Mays, PhD and do not represent the views of NICHD, NIH or the United States Government.
 
-**`In what follows - is my development of a practice that enables workflow and platform independence facilitating reproducibility.`**
+**`In what follows - is my development of a practice that enables workflow and platform independence facilitating repurposability.`**
 
 ## Learning from those who have walked the journey
 
