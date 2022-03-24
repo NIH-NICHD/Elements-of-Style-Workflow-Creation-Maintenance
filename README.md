@@ -8,7 +8,11 @@
 
 * [Log into INCLUDE Data Hub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingIntoCAVATICAFromINCLUDEDataHub.gif)
 
-* [Log into CAVATICA](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingInAfterEnteringINCLUDEDataHubWithORCID.gif)
+* [Log into CAVATICA from INCLUDE Data Hub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingInAfterEnteringINCLUDEDataHubWithORCID.gif). 
+
+or
+
+* [Log straight into CAVATICA](https://cavatica.sbgenomics.com/)
 
 * [Start a DataCruncher Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/DataCruncherJupyterLabNotebook.gif)
 
