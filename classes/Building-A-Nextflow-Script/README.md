@@ -186,6 +186,25 @@ Here we will add a new process `multiqc` & use the [`.collect()`](https://www.ne
 Add the following process after `fastqc`:
 ```nextflow
 //main.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
+
+process fastqc {
+
+    tag "$name"
+    publishDir "results", mode: 'copy'
+    container 'flowcraft/fastqc:0.11.7-1'
+
+    input:
+    set val(name), file(reads) from reads
+
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
+
+    script:
+    """
+    fastqc $reads
+    """
+}
 process multiqc {
 
     publishDir "results", mode: 'copy'
