@@ -2,7 +2,7 @@
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/INCLUDEDataCoordinatingCenter.png"  width="250">
 </p>
 
-# Elements of Style Repurposable Workflow Creation Maintenance 
+# Elements of Style Workflow Creation Maintenance 
 
 ## Lets Jump Right In
 
