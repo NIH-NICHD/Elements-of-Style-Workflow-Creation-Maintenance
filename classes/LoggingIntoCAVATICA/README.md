@@ -25,12 +25,13 @@ Logging in with your ERACommons ID will allow CAVATICA to provide you access to 
 You can read about the connection between [dbGaP and ERACommons](https://www.ncbi.nlm.nih.gov/books/NBK570247/#DAreq_ApplyFordbGaP.what_is_the_relation)
 
 
-### Step 2 -
+### Step 2 - Authorize CAVATICA
 
-The next window you will see is the Gen3 login window - where you authorize NIH and RAS to retrieve the controlled-access datasets to which you have access.
+The next window you will see is the Gen3 login window - where you authorize NIH and RAS to retrieve the controlled-access datasets to which you have access.   
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAGen3WindowNumber2.png">
 
+Click Yes, I authorize<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAYesIAuthorize.png" width=100 align="right">
 
 ## End State
 
