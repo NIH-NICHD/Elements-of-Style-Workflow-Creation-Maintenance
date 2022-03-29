@@ -12,7 +12,7 @@
 
 or
 
-* [Log straight into CAVATICA](https://cavatica.sbgenomics.com/)
+* [Log straight into CAVATICA Step-by-Step](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/LoggingIntoCAVATICA/README.md)
 
 * [Start a DataCruncher Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/DataCruncherJupyterLabNotebook.gif)
 
