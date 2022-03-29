@@ -20,7 +20,9 @@ The [CAVATICA Initial Login Window](https://cavatica.sbgenomics.com) looks like 
 <b>
 </b>
 
-Logging in with your ERACommons ID will allow CAVATICA to provide you access to data for which you are authorized.
+Logging in with your ERACommons ID will allow CAVATICA to provide you access to data for which you are authorized.  You can Login with the eRA Commons after you have created an account on Cavatica. The account will automatically linked to the ERA Commons, making it possible to Log in with the ERA Commons.
+
+See the [platform documentation for details](https://docs.cavatica.org/docs/sign-up-for-cavatica)
 
 You can read about the connection between [dbGaP and ERACommons](https://www.ncbi.nlm.nih.gov/books/NBK570247/#DAreq_ApplyFordbGaP.what_is_the_relation)
 
