@@ -4,15 +4,39 @@
 
 # Elements of Style Workflow Creation Maintenance 
 
-## Lets Jump Right In
+## Creating an Account on CAVATICA
+
+Please create your account on CAVATICA
+
+Navigate to [CAVATICA](https://cavatica.sbgenomics.com)
+
+First screen you will see:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountNumber1.png">
+
+You can either select `Create an account` or `Log in with eRA Commons`.
+
+If you select `Create an account`, you will see:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountNumber2.png">
+
+Or if you select `Log in with eRACommons` you will see:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountERACommonsNumber3.png">
+
+
+See further documentation:
+[CAVATICA Account Login Creation Documentation](https://docs.cavatica.org/docs/sign-up-for-cavatica)
+
+## Lets Log in straight to CAVATICA
+
+* [Log straight into CAVATICA Step-by-Step and Start a Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/LoggingIntoCAVATICA/README.md)
+
+## Logging in From INCLUDE Data Hub
 
 * [Log into INCLUDE Data Hub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingIntoCAVATICAFromINCLUDEDataHub.gif)
 
 * [Log into CAVATICA from INCLUDE Data Hub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingInAfterEnteringINCLUDEDataHubWithORCID.gif). 
-
-or
-
-* [Log straight into CAVATICA Step-by-Step](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/LoggingIntoCAVATICA/README.md)
 
 * [Start a DataCruncher Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/DataCruncherJupyterLabNotebook.gif)
 
