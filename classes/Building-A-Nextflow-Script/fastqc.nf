@@ -1,4 +1,4 @@
-//mainf.nf
+//fastqc.nf
 reads = file(params.reads)
 
 process fastqc {
