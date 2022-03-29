@@ -31,13 +31,56 @@ The next window you will see is the Gen3 login window - where you authorize NIH 
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAGen3WindowNumber2.png">
 
-Click Yes, I authorize<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAYesIAuthorize.png" width=100 align="right">
+Click Yes, I authorize  <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAYesIAuthorize.png" width=100 align="center">
 
-## End State
+The next window can vary depending upon if this is your first time logging in or not.
 
-* [Log straight into CAVATICA](https://cavatica.sbgenomics.com/)
+An example of your next window is the Dashboard view
 
-## Data Cruncher Step-by-Step
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALoginDashboardNumber3">
+
+### Step 3 - Create a Project
+
+Next we want to create a project. 
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAProjectNumber4">
+
+`Important!`
+
+Choose `include-demo` Billing Group.
+
+Select `Allow network access`
+
+
+### Step 4 - Start JupyterLab Notebook from Data Cruncher
+
+Next Select `Data Cruncher`
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICASelectDataCruncherNumber5">
+
+### Step 5 - Create a New Analysis - Part 1
+
+Almost there - now we need to `Create New Analysis`.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateANewAnalysisNumber6">
+
+### Step 6 - Create a New Analysis - Part 2
+
+Fill in `Analysis name`.
+
+Select `JupyterLab` for the Environment
+
+Accept `Environment setup` defaults
+
+Select Instant type `c5.2xlarge (8vCPUs, 16GB RAM)`
+
+`Accept Storage (GB)` defaults
+
+Modify the Suspend Time to `90` Minutes
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateNewAnalysisNumber7">
+
+## Data Cruncher Recap as a Gif
 
 * [Start a DataCruncher Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/DataCruncherJupyterLabNotebook.gif)
 
