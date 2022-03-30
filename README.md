@@ -2,32 +2,17 @@
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/INCLUDEDataCoordinatingCenter.png"  width="250">
 </p>
 
-# Elements of Style Workflow Creation Maintenance 
+# Elements of Style Workflow Creation Maintenance
 
+The [INCLUDE Data Hub](https://includedcc.org/) is a new resource that securely hosts human clinical, genomic, transcriptomic, proteomic, and other data providing a wealth of opportunities to study conditions that affect individuals with Down syndrome.   Today, the approach to answering new scientific questions with these data often uses cloud-based methods accessible through web browsers.
 
-## Creating an Account on CAVATICA
+During a three-hour virtual training, users learn the know-how to ask scientific questions with these data using cloud platforms and workflows.   Users will learn how to build and share processes that assure reproducibility, repurposablility regardless of the computational environment.   While many things are possible, the user will be oriented to approaching their work in a modular, testable fashion.  
 
-Please create your account on CAVATICA
+## Create an account in CAVATICA
 
-Navigate to [CAVATICA](https://cavatica.sbgenomics.com)
+If you have not already done so, [please go ahead and create an account on CAVATICA](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Creating-A-CAVATICA-Account/README.md)
 
-First screen you will see:
-
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountNumber1.png">
-
-You can either select `Create an account` or `Log in with eRA Commons`.
-
-If you select `Create an account`, you will see:
-
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountNumber2.png">
-
-Or if you select `Log in with eRACommons` you will see:
-
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAnAccountERACommonsNumber3.png">
-
-
-See further documentation:
-[CAVATICA Account Login Creation Documentation](https://docs.cavatica.org/docs/sign-up-for-cavatica)
+For today's class, if you have not already done so, let my colleagues know so we can add you to the appropriate billing group.
 
 ## Lets Log in straight to CAVATICA
 
@@ -54,10 +39,10 @@ While things start to cook -- let me review the Agenda and show a brief presenta
 | 11:50 - 12:20 | 4. [Building A Nextflow Script](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-A-Nextflow-Script/README.md)<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png" width="100" align="right"> 
 | 12:20 - 12:30 | 5. [Building A CWL Script](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-A-CWL-Script) |
 | 12.30 - 12.45 | :coffee:      *Short break - Stretch your legs! (15 minutes)*            :coffee:|
-| 12:45 - 13.15 | 4. [Working with Apps on the INCLUDE DataHub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/WorkingWithAppsOnCAVATICA/WorkingWithAppsOnCAVATICA.md)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/INCLUDEDataCoordinatingCenter.png"  width="100" align="right">
-| 13:15 - 13.30 | 5. [GitHub Actions to build, test and deposit container images](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/GitHubActions/GitHubActionsForMaintenanceTesting.md) <img src="https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/assets/Octocat.png" width="100" align="right"> |
-| 13.30 - 13.45 | 6. [Stitching processes with other workflow languages, such as Common Workflow Language](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/NextflowSharedDataElements/NextflowCommonWorkFlowLanguageSharedStructureSharedElements.md) <img src="https://github.com/common-workflow-language/logo/blob/main/CWL-Logo-HD.png" width="100" align="right">|
-| 13:30 - 13.35 | 5. [Zenodo for DOIs and Genomic Summary and other Data](https://github.com/sheynkman-lab/Long-Read-Proteogenomics/blob/main/README.md) <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Zenodo_logo.jpg" width="100" align="right">|
+| 12.45 - 13.00 | 6. [Shared elements across workflow languages](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/NextflowSharedDataElements/NextflowCommonWorkFlowLanguageSharedStructureSharedElements.md)<img src="https://github.com/common-workflow-language/logo/blob/main/CWL-Logo-HD.png" width="50" align="right">|
+| 13.00 - 13.30 | 7. [Working with Apps on the CAVATICA](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/WorkingWithAppsOnCAVATICA/WorkingWithAppsOnCAVATICA.md)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/INCLUDEDataCoordinatingCenter.png"  width="100" align="right">
+| 13:30 - 13.40 | 8. [GitHub Actions to build, test and deposit container images](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/GitHubActions/GitHubActionsForMaintenanceTesting.md) <img src="https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/assets/Octocat.png" width="100" align="right"> |
+| 13:40 - 13.50 | 9. [More complicated example published: Zenodo for DOIs for Workflow GitHub, Analysis GitHub, Genomic Summary Information, etc](https://github.com/sheynkman-lab/Long-Read-Proteogenomics/blob/main/README.md) <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Zenodo_logo.jpg" width="100" align="right">|
 | 13.50 - 14.00 | *Closing remarks and future directions*|
 <br/><br/>
 
