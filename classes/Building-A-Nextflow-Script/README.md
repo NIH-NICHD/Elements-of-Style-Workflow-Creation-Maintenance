@@ -1,9 +1,52 @@
-# Nextflow Tutorial
+# Building a Nextflow Workflow
+
+
+#### Run a container in interactive mode using bash
+
+Launching a BASH shell in the container allows you to operate in an interactive mode 
+in the containerised operating system. For example: 
+
+```
+docker run -it pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 bash 
+``` 
+
+Once the container is launched you will notice that's running as root (!). 
+Use the usual commands to navigate in the file system.
+
+To exit from the container, stop the BASH session with the `exit` command.
+
+#### Run a container in interactive mode mounting local directory
+
+One can run a container also from the command line - mounting the current directory.
+
+Mounting means that we are making the directory we are in available to the container.
+
+To do this we can do as follows - first define an environment variable for convenience
+
+```bash
+PWD=$(pwd)
+echo $PWD
+``` 
+Next we will run in an interactive mode but mounting our directory
+
+```bash
+docker run -it -v $PWD:$PWD -w $PWD pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 fastqc -h
+```
+
+In this session, we will use the two Docker images we built in the previous sections and we will how to put these together into a single workflow using the Nextflow workflow language.  Later, we will learn out to put these two Docker images into a single workflow using the CWL or Common Workflow Language.   After the break, we will see how to use these two Docker images to build an application within the CAVATICA environment.
+
+
+* Google Cloud Shell
+* Find packages with Anaconda
+* Create a conda environment
+* Fork a GitHub repository
+* Clone a GitHub repository
+* Use conda to install a standard workflow language `Nextflow`
+* 
 
 <img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png">
 
-
-Tutorial for INCLUDE Workshop, on 23 March 2022, covering Nextflow, containers and CAVATICA
+Tutorial for INCLUDE Workshop, on 31 March 2022, covering Nextflow, containers and CAVATICA
 
 In this tutorial you will learn:
 - [Nextflow](https://www.nextflow.io/) - how to build parallelisable & scalable computational pipelines
@@ -11,7 +54,6 @@ In this tutorial you will learn:
 ## Contents
 
 - [Session 1: Nextflow](#session-1-nextflow)
-    - [a) Installation](#a-installation)
     - [b) Parameters](#b-parameters)
     - [c) Processes (inputs, outputs & scripts)](#c-processes-inputs-outputs--scripts)
     - [d) Channels](#d-channels)
@@ -28,23 +70,108 @@ We are going to use [Google Shell Cloud] to walk through the building of a Nextf
 
 * `Docker` is installed
 
-* `Nextflow` can be installed
+* `conda` can be installed
 
-In the last session we went through some basic command line skills and there are links in the course material for you to be able to go back and review.
+* The standard workflow language for Nextflow `nextflow` can be installed
 
-Let's begin:  In your web browser (Chrome preferred) - navigate to (https://shell.cloud.google.com)
+* The standard workflow language for the Common Workflow Language (CWL) `cwltool` can be installed
+
+### What is [Docker](https://www.docker.com/) <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Moby-Logo.png" width=50 align=left>?
+
+Docker is the application we use to build our containerized images.   It turns our code into an image that can be run interactively or be placed upon a virtual machine that we spin up on CAVATICA as part of a workflow.   The logo that is associated with `Docker` is a whale but looks like a containership.   Containers revolutionized the shipping industry by creating a uniform entity that could permits disparate items to be packaged in the same manner allowing devices that do not know what they contain to carry those items.   Much in the same way that `packets` revolutionized communication with the internet.  This is why we concern ourselves with containers. 
 
 
+### Install Nextflow
+
+Now we can install `nextflow` package.   To get the installation command, we again search `Anaconda` for the package details.   We see that this is a pretty popular package, there have been at the time of this writing, that this has been downloaded 162,780 times and that the last upload was 2 months and 6 days ago and we have the GitHub location of the software. 
+
+Importantly, we now see how to install the `nextflow` application.
+
+```bash
+conda install -c bioconda nextflow
+```
+
+The package installer manages the items that need to be installed, telling us the following packages will be installed and asking if we would like to proceed.
+
+```bash
+The following NEW packages will be INSTALLED:
+
+  coreutils          bioconda/linux-64::coreutils-8.25-1
+  java-jdk           bioconda/linux-64::java-jdk-8.0.92-1
+  libgcc             pkgs/main/linux-64::libgcc-7.2.0-h69d50b8_2
+  nextflow           bioconda/linux-64::nextflow-0.24.2-0
+
+The following packages will be UPDATED:
+
+  ca-certificates    conda-forge::ca-certificates-2021.10.~ --> pkgs/main::ca-certificates-2022.3.18-h06a4308_0
+
+
+Proceed ([y]/n)?
+```
+
+We say `y` and the package is installed.
+
+Confirming we type the following:
+
+```bash
+which nextflow
+```
+
+And because we have activated our environment `eos`, you will see that the `nextflow` application is installed in the `bin` which is short for `binary` location within `eos`
+
+```bash
+(eos) adeslat@cloudshell:~$ which nextflow
+/home/adeslat/miniconda3/envs/eos/bin/nextflow
+```
+
+#### recap
+
+
+### GitHub Forking and Cloning
+
+Now we are all using command shell, we are working with `conda`, now we need to do some work.   The work we are following will be using `data` from `Zenodo` and the tutorial we are following is on `GitHub`.  The tutorial has code that we will use and build from, so it makes sense for us to get a copy, or `clone` this repository.   We may want to make local changes.  To do this, it is good practices to `Fork` the repository.  So let's all `Fork`.
+
+In the browser window, navigate to the repository `https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance`.
+
+Assuming you have a `GitHub` login and you are logged in, you can now `fork` this repository.
+
+At the top of the screen on the right, you will see `pin` `watch` `fork` and `star`.  If you like this course in the end, you may wish to `star` this repository.
+
+Fork this repository and choose your `personal` GitHub repository for the repository to be `forked` into.
+
+Forking is a best practice, as it allows for `attribution`.   Open science promotes sharing and `attribution`.   If you are curious about the best practices surrounding this, there are many good resources, one in particular I like is `[The Turing Way](https://the-turing-way.netlify.app/welcome)`.  I encourage you to read about these evolving best practices and join this movement of open science.
+
+
+Now that you have `forked` this repository, you can clone it.   To clone it go to the version in your repository, select the `copy` option and select `https`.
+
+Taking the `forked` version I have made into my own repository, we have:
 
 ```bash
 git clone https://github.com/adeslatt/Elements-of-Style-Workflow-Creation-Maintenance.git
+```
+
+Now change into the directory.
+
+```bash
 cd Elements-of-Style-Workflow-Creation-Maintenance
 ```
+
+And we can now move into building a `Nextflow` script.
+
+Okay to recap, what have we done:
+
+* Logged into `google cloud shell`
+* Installed `conda`
+* Rebooted our shell environment with `exec -l`
+* Used `conda` to create a clean environment, `eos`
+* Inspected our environment
+* Installed `nextflow`
+* Forked a `GitHub` repository into our own personal repository location
+* Cloned the `GitHub` repository into the `google cloud shell`
 
 ## Session 1: Nextflow
 
 <img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png" width=500 align="left">
-
 
 **Main outcome:** *During the first session you will build a [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) & [MultiQC](https://multiqc.info/) pipeline to learn the basics of Nextflow including:*
 - [Parameters](https://www.nextflow.io/docs/latest/getstarted.html?highlight=parameters#pipeline-parameters)
@@ -287,38 +414,6 @@ Here we have enabled docker by default, initialised parameters, set resources & 
 The pipeline can now be run with the following:
 ```bash
 nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
-```
-
-#### Run a container in interactive mode using bash
-
-Launching a BASH shell in the container allows you to operate in an interactive mode 
-in the containerised operating system. For example: 
-
-```
-docker run -it pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 bash 
-``` 
-
-Once the container is launched you will notice that's running as root (!). 
-Use the usual commands to navigate in the file system.
-
-To exit from the container, stop the BASH session with the `exit` command.
-
-#### Run a container in interactive mode mounting local directory
-
-One can run a container also from the command line - mounting the current directory.
-
-Mounting means that we are making the directory we are in available to the container.
-
-To do this we can do as follows - first define an environment variable for convenience
-
-```bash
-PWD=$(pwd)
-echo $PWD
-``` 
-Next we will run in an interactive mode but mounting our directory
-
-```bash
-docker run -it -v $PWD:$PWD -w $PWD pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 fastqc -h
 ```
 
 ## Return to the Agenda

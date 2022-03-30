@@ -1,125 +1,125 @@
-# Building Dockerfiles
-
-In this way we are running the command as if we had locally installed it -- which is great for debugging one process at a time.
-
-- [Docker](https://www.docker.com/) - how to use Docker containers - which we will show in the next hour how to build
+# Building A [Common Workflow Language (CWL) Workflow](https://www.commonwl.org/)
 
 
-Docker images are created by using a so called `Dockerfile` i.e. a simple text file 
-containing a list of commands to be executed to assemble and configure the image
-with the software packages required.    
+```nextflow
+//main.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
 
-In this step, you will create a Docker image containing the FastQC & MultiQC tools.
+process fastqc {
 
+    tag "$name"
+    publishDir "results", mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
 
-Warning: the Docker build process automatically copies all files that are located in the 
-current directory to the Docker daemon in order to create the image. This can take 
-a lot of time when big/many files exist. For this reason, it's important to *always* work in 
-a directory containing only the files you really need to include in your Docker image. 
-Alternatively, you can use the `.dockerignore` file to select the path to exclude from the build. 
+    input:
+    set val(name), file(reads) from reads
 
-Then use your favourite editor eg. `vim` to create a file named `Dockerfile` and copy the 
-following content: 
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
 
-```Dockerfile
-# Full contents of Dockerfile
-
-FROM continuumio/miniconda3
-LABEL description="Base docker image with conda and util libraries"
-ARG ENV_NAME="fastqc"
-
-# Install the conda environment
-COPY environment.yml /
-RUN conda env create --quiet --name ${ENV_NAME} --file /environment.yml && conda clean -a
-
-# Add conda installation dir to PATH (instead of doing 'conda activate')
-ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
+    script:
+    """
+    fastqc $reads
+    """
+}
 ```
 
-Notice that this Docker file uses a file called `environment.yml`. 
+The `reads` variable is now equal to a channel which contains the reads prefix & paired-end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. This `name` can be used as a tag for when the pipeline is run. Also, as we are now declaring two inputs the `set` keyword has to be used. Finally, we can specify the container name within the processes as a directive.
 
-You can edit this file in an editor and make a file called `environment.yml` and make sure it is in the same directory
-
-```environment.yml
-name: fastqc
-channels:
-  - bioconda
-  - defaults
-dependencies:
-  - fastqc
-```
-When done save the file. 
-
-### c) Building images
-
-Build the Docker image by using the following command: 
-
+To run the pipeline:
 ```bash
-docker build -t fastqc .
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
-Note: don't miss the dot in the above command. When it completes, verify that the image 
-has been created listing all available images: 
+#### Recap
+Here we learnt how use to the [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to generate a channel for our input data.
 
+### e) Operators
+
+Operators are methods that allow you to manipulate & connect channels.
+
+Here we will add a new process `multiqc` & use the [`.collect()`](https://www.nextflow.io/docs/latest/operator.html#collect) operator
+
+Add the following process after `fastqc`:
+```nextflow
+//main.nf
+reads = Channel.fromFilePairs(params.reads, size: 2)
+
+process fastqc {
+
+    tag "$name"
+    publishDir "results", mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+
+    input:
+    set val(name), file(reads) from reads
+
+    output:
+    file "*_fastqc.{zip,html}" into fastqc_results
+
+    script:
+    """
+    fastqc $reads
+    """
+}
+process multiqc {
+
+    publishDir "results", mode: 'copy'
+    container 'pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0'
+
+    input:
+    file ('fastqc/*') from fastqc_results.collect()
+
+    output:
+    file "*multiqc_report.html" into multiqc_report
+    file "*_data"
+
+    script:
+    """
+    multiqc . -m fastqc
+    """
+}
+```
+
+Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect all of the files & run only once.
+
+The pipeline can be run with the following:
 ```bash
-docker images
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
-#### Using existing containers from a repository
+#### Recap
+Here we learnt how to use operators such as `collect` & connect processes via channels
 
-We will go into more detail in the next session
+### f) Configuration
 
-Navigate to the top of your home directory
+Configuration, such as parameters, containers & resources eg memory can be set in `config` files such as [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file).
 
+For example our `nextflow.config` file might look like this:
+```
+docker.enabled = true
+params.reads = false
+
+process {
+  cpus = 2
+  memory = "2.GB"
+
+  withName: fastqc {
+    container = "pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0"
+  }
+  withName: multiqc {
+    container = "pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0"
+  }
+}
+```
+
+Here we have enabled docker by default, initialised parameters, set resources & containers. It is best practice to keep these in the `config` file so that they can more easily be set or removed. Containers & `params.reads` can then be removed from `main.nf`.
+
+The pipeline can now be run with the following:
 ```bash
-cd ~
+nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
 ```
 
-Clone the two containers
+## Return to the Agenda
 
-```bash
-git clone https://github.com/adeslatt/fastqc-docker.git
-```
-
-and 
-
-```bash
-git clone https://github.com/adeslatt/multiqc-docker.git
-```
-
-#### Build the Fastq image
-
-With the `Dockerfile` from above you might want to run:
-```bash
-cd fastqc-docker
-docker build -t fastqc .
-```
-
-#### Build the multiqc image
-
-Navigate now to multiqc
-
-```bash
-cd ../multiqc-docker
-docker build -t multiqc .
-```
-
-#### Now look at the images we have available to us
-
-what images are available 
-
-```bash
-docker images
-```
-
-
-#### Inspect what images you have now available to you
-
-You can see what you have built -- and see that we have `tag`ged our files in a certain way
-
-```bash
-docker images
-```
-
-The containers can be used in our Nextflow pipeline replacing the two different containers we currently have because it has both `fastqc` & `multiqc` installed
-
+[Main Agenda](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance#readme)
