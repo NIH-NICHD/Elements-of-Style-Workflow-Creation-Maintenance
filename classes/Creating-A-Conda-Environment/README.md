@@ -3,7 +3,7 @@
 <img src="img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg">
 
 
-## What is [conda](https://docs.conda.io/en/latest/) <img src="img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width="50" align="right">
+## What is [conda](https://docs.conda.io/en/latest/) <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width="50" align="right">
 
 Conda is an application that we use to control our environment and manage our package installations.  We will work today within a terminal window and the first thing I like to do is to make a clean environment window.   This ensures that all of the assumptions we made about our environment are clear and explicit.  Without this you may inadvertantly introduce dependicies that may complicate your building of your container and/or stitching together your workflow.   When we build our container, we begin many of times using the conda environment made by the group that builds conda as a basis.  This then does give us the application conda within our environment for our use like docker is available in our google shell now.
 

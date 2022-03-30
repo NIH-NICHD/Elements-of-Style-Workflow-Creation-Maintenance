@@ -3,7 +3,8 @@
 </p>
 
 # Elements of Style Workflow Creation Maintenance 
-#HI
+
+
 ## Creating an Account on CAVATICA
 
 Please create your account on CAVATICA
@@ -48,8 +49,10 @@ While things start to cook -- let me review the Agenda and show a brief presenta
 | 11.00 - 11.10 | *Welcome Address and Presentation of Tutorial Agenda* |
 | 11.10 - 11.15 | 0. [A few simple rules for easier workflow maintenance and reuse](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Elements-of-Style/A-Few-Simple-Rules-Shortened.md)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/The_Elements_of_Programming_Style.jpg" width="100" align="right">|
 | 11.15 - 11.30 | 1. [Example Volcano Plot on CAVATICA](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Running-a-JupyterLab-Notebook)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALogo.png" width="100" align="right">|
-| 11:30 - 12.00 | 2. [Stitching processes with a standard workflow - Nextflow](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-A-Nextflow-Script/README.md)<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png" width="100" align="right"> |
-| 12:00 - 12.30 | 3. [Dockerfile for each process - Docker](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/2-intro-to-conda-docker/2-build-test-share-dockerfiles-github.md) <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Moby-Logo.png" width="100" align="right">|
+| 11:30 - 11.40 | 2. [Creating a conda environment](https://github.com/NIH-NICHD/Creating-A-Conda-Environment)<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Conda_logo.svg" width="100" align="right"> |
+| 11:40 - 11:50 | 3. [Building Dockerfiles](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-Dockerfiles/README.md)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Moby-Logo.png" width="100" align="right">|
+| 11:50 - 12:20 | 4. [Building A Nextflow Script](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-A-Nextflow-Script/README.md)<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png" width="100" align="right"> 
+| 12:20 - 12:30 | 5. [Building A CWL Script](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Building-A-CWL-Script) |
 | 12.30 - 12.45 | :coffee:      *Short break - Stretch your legs! (15 minutes)*            :coffee:|
 | 12:45 - 13.15 | 4. [Working with Apps on the INCLUDE DataHub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/WorkingWithAppsOnCAVATICA/WorkingWithAppsOnCAVATICA.md)<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/INCLUDEDataCoordinatingCenter.png"  width="100" align="right">
 | 13:15 - 13.30 | 5. [GitHub Actions to build, test and deposit container images](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/GitHubActions/GitHubActionsForMaintenanceTesting.md) <img src="https://github.com/ISCB-Academy/Elements-of-Style-Reproducible-Workflow-Creation-Maintenance-Tutorial/blob/main/assets/Octocat.png" width="100" align="right"> |
