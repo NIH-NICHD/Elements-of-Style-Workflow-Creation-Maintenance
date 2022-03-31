@@ -45,11 +45,11 @@ An example of your next window is the Dashboard view
 
 Next we want to create a project. 
 
-`Important!`
+Choose a title for your project, here I chose `Elements of Style` 
 
 Choose `include-demo` Billing Group.
 
-Select `Allow network access`
+❗`Important!`❗ Select `Allow network access`
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAProjectNumber4.png">
 
