@@ -14,6 +14,20 @@ We will walk through those steps today with our simple example.
 I regularly type this in my browser window to find the packages I need to install.  
 Anaconda environment is growing by leaps and bounds and there are more things that can be done there that I have yet to explore.   In addition to well vetted packages that can be installed, this large community resource provides tutorials, data science instructions as well as whole environments where you can work, explore and learn.   For example, today we already showed you how to run a jupyterlab notebook, but you want to know more.  Their site offers instruction on [Jupyterlab basics](https://anaconda.org/ijstokes/open-data-science-with-anaconda/notebook) for you to explore.
 
+## Logging into Google Shell
+
+For this part of our demo/hands on, we will be using google shell.  
+
+Navigate please to [Google Shell](https://shell.cloud.google.com/)
+
+It will ask you to login, please follow the prompts and do so.
+
+Upon success you will see a window like this:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleCloudShell1.png">
+
+We have an editor as well as a prompt.
+
 ## Installing conda
 
 We need to get the installation package for conda.  We get this package from continuum analytics, we will be installing [Miniconda](https://docs.conda.io/en/latest/miniconda.html).  Miniconda is the minimal installer and all we need.
