@@ -49,7 +49,7 @@ Choose a title for your project, here I chose `Elements of Style`
 
 Choose `include-demo` Billing Group.
 
-❗`Important!`❗ Select `Allow network access`
+❗`Important!` Select `Allow network access`❗
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateAProjectNumber4.png">
 
@@ -77,11 +77,11 @@ Select Instant type `c5.2xlarge (8vCPUs, 16GB RAM)`
 
 `Accept Storage (GB)` defaults
 
-Modify the Suspend Time to `90` Minutes
+❗ Modify the Suspend Time to `180` Minutes ❗
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateNewAnalysisNumber7.png">
 
-Okay -- while that is cooking we will go through a small presentation 
+Okay -- while that is cooking we will go through a small presentation - [Elements of Style with Platforms as a Service](https://docs.google.com/presentation/d/1Ki63hFXmjUnWxU96rhTBbEFsIG5mwLEFZafCp1bYV4M/edit?usp=sharing) 
 
 ## Return to the Agenda
 
