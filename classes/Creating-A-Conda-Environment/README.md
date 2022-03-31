@@ -159,9 +159,9 @@ conda env list
 
 We have learned in this lesson
 
-* We started a `bash shell environment` using our browser and the `[shell](https://shell.cloud.google.com)`
-* We explored the open community-based resources offered through `[Anaconda](https://anaconda.org)` hosted by `Continuum Analytitcs`
-* We used `wget` available within the `[shell](https://shell.cloud.google.com)` and got the installation package necessary to install `conda` 
+* We started a `bash shell environment` using our browser and the [shell](https://shell.cloud.google.com)
+* We explored the open community-based resources offered through [Anaconda](https://anaconda.org)
+* We used `wget` available within the [shell](https://shell.cloud.google.com) and got the installation package necessary to install `conda` 
 * We installed `conda` and 
 * We used numerous command line arguments 
 * We used `conda` to create a new clean environment.
