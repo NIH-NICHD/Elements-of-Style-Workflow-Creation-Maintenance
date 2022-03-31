@@ -27,11 +27,13 @@ Click here [Elements of Style Workflow Creation and Maintenance](https://github.
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone1.png">
 
-If you have already made a fork, it would make sense to fetch any upstream changes that may have occured since you last visted.
+In the upper righthand side of the screen, select `Fork` and choose to `Fork` it into your own personal repository.
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone2.png">
 
+If you have already made a fork, it would make sense to fetch any upstream changes that may have occured since you last visted.  Your screen should look like this:
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone3.png">
 
-Next, 
+Next, navigate to the 🟦`Code` button on the right and select `HTTPS` and copy the link.
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone4.png">
 
