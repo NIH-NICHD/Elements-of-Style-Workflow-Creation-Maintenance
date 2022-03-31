@@ -167,6 +167,10 @@ Navigate now to multiqc
 
 ```bash
 cd ../multiqc-docker
+```
+
+And build the image
+```bash
 docker build -t multiqc .
 ```
 
