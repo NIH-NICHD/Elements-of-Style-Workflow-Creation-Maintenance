@@ -166,7 +166,7 @@ Now that we have `conda` we can create an environment that will keep our workspa
 We create an environment as follows:
 
 ```bash
-create env -n eos -y
+conda create env -n eos -y
 ```
 
 Now that we have created a clean environment, we follow the directions and activate the environment, that is enter this new clean environment.
