@@ -132,9 +132,7 @@ When it completes, we can verify that the image has been created listing all ava
 docker images
 ```
 
-### 
-
-We will go into more detail in the next session
+## Building the `multiqc` Docker image 
 
 Navigate to the top of your home directory
 
@@ -142,27 +140,14 @@ Navigate to the top of your home directory
 cd ~
 ```
 
-Clone the two containers
-
-```bash
-git clone https://github.com/adeslatt/fastqc-docker.git
-```
-
-and 
+Clone the multiqc-docker repository.
 
 ```bash
 git clone https://github.com/adeslatt/multiqc-docker.git
 ```
 
-#### Build the Fastq image
 
-With the `Dockerfile` from above you might want to run:
-```bash
-cd fastqc-docker
-docker build -t fastqc .
-```
-
-#### Build the multiqc image
+## Build the multiqc image
 
 Navigate now to multiqc
 
@@ -170,15 +155,6 @@ Navigate now to multiqc
 cd ../multiqc-docker
 docker build -t multiqc .
 ```
-
-#### Now look at the images we have available to us
-
-what images are available 
-
-```bash
-docker images
-```
-
 
 ### Inspect what images you have now available to you
 
