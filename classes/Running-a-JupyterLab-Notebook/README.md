@@ -3,17 +3,62 @@
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/JupyterLabLogoWithName.png"  width="250">
 </p>
 
-# Intro to command line in the JupyterLab interface
+# Example Volcano Plot in a JupyterLab Notebook on [CAVATICA](https://cavatica.sbgenomics.com)
 
-## Agenda for Example Volcano Plot:
 
-| Time        | Programme       |
-| ----------- | --------------------------------------------------------------------------- |
-| 11.15 - 11.20 | <img src="https://icon-library.com/images/bash-icon/bash-icon-5.jpg"  width="25">  [Useful commands for the command line and introduction to the JupyterLab interface terminal](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Running-a-JupyterLab-Notebook/1-using-the-command-line.ipynb) |
-| 11:20 - 11:30| <img src="https://www.r-project.org/logo/Rlogo.svg"  width="25">  [Useful commands to run R code and install required dependencies](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/Running-a-JupyterLab-Notebook/2-reading-data-and-plotting-in-R.ipynb)|
+## Log back in
 
-<br/><br/>                                                     
+Within your browser, navigate back to [CAVATICA](https://cavatica.sbgenomics.com) and log back in.
 
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALoginWindowNumber1.png">
+
+Authorize CAVATICA to act on your behalf.
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAGen3WindowNumber2.png">
+
+Arrive at the CAVATICA window - we created a project and an analysis notebook already, you may have to select that project.
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALoginDashboardNumber3.png">
+
+## Fork the GitHub Repository
+
+Fork the [Elements of Style Workflow Creation and Maintenance](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance) repository into your own personal `GitHub` repository.
+
+## Clone the repository in the Jupyterlab terminal window
+
+Navigate to the right, select `https` and copy the link to your personal version of the repository.
+
+Navigate to the `JupyterLab` notebook you have opened on `CAVATICA`
+
+Select the `terminal window`
+
+At the prompt type:
+
+```bash
+git clone https://github.com/adeslat/Elements-of-Style-Workflow-Creation-Maintenance
+```
+
+Move into the directory for this class.
+
+```bash
+cd Elements-of-Style-Workflow-Creation-Maintenance/classes/Running-a-JupyterLab-Notebook/
+```
+
+
+## Open the `1-using-the-command-line.ipynb`
+<img src="https://icon-library.com/images/bash-icon/bash-icon-5.jpg"  width="25"> 
+
+Now follow the folder and select the first notebook in the directory, and we will execute all the command lines interactively.
+
+`1-using-the-command-line.ipynb`
+
+Note that this notebook had the `python` kernel running, normally we would have executed this in a `bash` kernel.  This Kernel is not yet available on the CAVATICA platform but soon will be.
+
+## Open the `2-reading-data-and-plotting-in-R.ipynb`
+
+Next, we will execute the second `jupyterlab` notebook, this one is running the `R` kernel.
+
+Look again at the folders on the left and select the second notebook.
+
+`2-reading-data-and-plotting-in-R.ipynb`
 
 ## Return to the Agenda
 
