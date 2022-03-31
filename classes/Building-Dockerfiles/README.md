@@ -76,7 +76,7 @@ ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
 
 After pasting in the window, your file should look like this:
 
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellDockerFile2.png">
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellDockerfile2.png">
 
 The `docker` application understands the commands `FROM`, `LABEL`, `ARG ENV_NAME`, `COPY`, `RUN` and `ENV PATH`.  
 It also knows that `#` are comments and are for the human reader that is reading this file to understand what is happening within the file itself.
