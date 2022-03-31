@@ -55,6 +55,8 @@ The `docker` application requires the exact filename `Dockerfile` when creating 
 
 In the google shell editor window this time, open the file named `Dockerfile`
 
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellDockerFile1.png">
+
 Copy the contents of the window below and paste it into your window.
 
 ```Dockerfile
@@ -72,6 +74,10 @@ RUN conda env create --quiet --name ${ENV_NAME} --file /environment.yml && conda
 ENV PATH /opt/conda/envs/${ENV_NAME}/bin:$PATH
 ```
 
+After pasting in the window, your file should look like this:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellDockerFile2.png">
+
 The `docker` application understands the commands `FROM`, `LABEL`, `ARG ENV_NAME`, `COPY`, `RUN` and `ENV PATH`.  
 It also knows that `#` are comments and are for the human reader that is reading this file to understand what is happening within the file itself.
 
@@ -80,6 +86,10 @@ The `base` image we are using for the `Dockerfile` is from `continuumio` the mak
 We are adding to this `base` image our new function `fastqc`.
 
 You will see later that you can `COPY` your own custom scripts for use within the container.   This is the process of `containerization`.
+
+Notice as well we are prompted to look at our quotas, not an infinite resource but pretty good availability for a free asset.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellQuotaInformation.png">
 
 Now we will inspect our `environment.yml` which is being used by `conda` to install our desired application.
 
@@ -125,6 +135,10 @@ The `.` says to build in the current directory.   This is the normal way to buil
 ```bash
 docker build -t fastqc .
 ```
+
+Here the google shell asks to authorize it to complete the task.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellDockerFileAuthorize.png">
 
 When it completes, we can verify that the image has been created listing all available images with the following command:
 
