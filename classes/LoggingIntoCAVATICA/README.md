@@ -55,17 +55,17 @@ Select `Allow network access`
 
 ### Step 4 - Start JupyterLab Notebook from Data Cruncher
 
-Next Select `Data Cruncher`
+Next, navigate to the right and select `Interactive Analysis` and then Select `Data Cruncher`
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICASelectDataCruncherNumber5.png">
 
-### Step 5 - Create a New Analysis - Part 1
+### Step 5 - Create a New Analysis - Part 1 of 2
 
-Almost there - now we need to `Create New Analysis`.
+Now we need to select `Create New Analysis`.
 
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateANewAnalysisNumber6.png">
 
-### Step 6 - Create a New Analysis - Part 2
+### Step 6 - Create a New Analysis - Part 2 of 2
 
 Fill in `Analysis name`.
 
@@ -82,10 +82,6 @@ Modify the Suspend Time to `90` Minutes
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICACreateNewAnalysisNumber7.png">
 
 Okay -- while that is cooking we will go through a small presentation 
-
-## Data Cruncher Recap as a Gif
-
-* [Start a DataCruncher Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/DataCruncherJupyterLabNotebook.gif)
 
 ## Return to the Agenda
 
