@@ -11,6 +11,8 @@ We will walk through those steps today with our simple example.
 
 ## [Anaconda](https://anaconda.org/) Search Packages
 
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/AnacondaMainWindow1.png">
+
 I regularly type this in my browser window to find the packages I need to install.  
 Anaconda environment is growing by leaps and bounds and there are more things that can be done there that I have yet to explore.   In addition to well vetted packages that can be installed, this large community resource provides tutorials, data science instructions as well as whole environments where you can work, explore and learn.   For example, today we already showed you how to run a jupyterlab notebook, but you want to know more.  Their site offers instruction on [Jupyterlab basics](https://anaconda.org/ijstokes/open-data-science-with-anaconda/notebook) for you to explore.
 
@@ -32,6 +34,10 @@ We have an editor as well as a prompt.
 
 We need to get the installation package for conda.  We get this package from continuum analytics, we will be installing [Miniconda](https://docs.conda.io/en/latest/miniconda.html).  Miniconda is the minimal installer and all we need.
 
+Navigating to that location you will see details here:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/AnacondaMiniconda2.png">
+
 Which installation do we need?  Typing `uname -a` will tell us the information about our operating system and hardware basics.
 
 ```bash
@@ -40,9 +46,11 @@ uname -a
 
 We see that we are using the `Linux` operating system, the first day I spun up this shell was on `March 16` and we see that it has the architecture `x86_64`.  A handy `64-bit` operating system.   
 
-Hover your cursor over the `Miniconda Linux 64-bit` (sorry it is implicitly that this is the right installation for the `x86-64` architecture.
+Scroll down the window and hover your cursor over the `Miniconda Linux 64-bit` (sorry it is implicitly that this is the right installation for the `x86-64` architecture.
 
 Right click and select `copy link address`.   This gives you the unique resource locator (url) for the installation script we will be downloading onto the machine we are talking to with our `google cloud shell` window.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/AnacondaMiniconda3.png">
 
 Now we will use the routine `wget` to copy this installation script.   To make sure we can do this, let's make sure that we have the tool available.   To do that, we type:
 
@@ -59,13 +67,15 @@ Now to install Miniconda, so that we can use `conda` to install any and all pack
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 ```
 
-If you haven't changed directories, you can see now that this package `Miniconda3-latest-Linux-x86_64.sh` is now in the directory.   As we learned earlier, we can use the `bash` shell commnad `ls` to inspect the contents of our current directory.  `ls -l` provides the full path details of our directory.   We check our current working directory with the `bash` shell comand `pwd` as we learned earlier.
+If you haven't changed directories, you can see now that this package `Miniconda3-latest-Linux-x86_64.sh` is now in the top directory.   As we learned earlier, we can use the `bash` shell commnad `ls` to inspect the contents of our current directory.  `ls -l` provides the full path details of our directory.   We check our current working directory with the `bash` shell comand `pwd` as we learned earlier.
 
 ```bash
 pwd
 ```
 
-For my execution, it returns `/home/adeslat`.
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GoogleShellWindow2.png">
+
+For my execution, it returns `/home/ad376`.
 
 Now running the command `ls -l` we see the downloaded file `Miniconda3-latest-Linux-x86-64.sh`.
 
