@@ -1,124 +1,107 @@
 # Building A [Common Workflow Language (CWL) Workflow](https://www.commonwl.org/)
 
+Here we now show how the same containers may be used in a CWL workflow.
 
-```nextflow
-//main.nf
-reads = Channel.fromFilePairs(params.reads, size: 2)
 
-process fastqc {
+## Showing the CWL workflow with the same containers
 
-    tag "$name"
-    publishDir "results", mode: 'copy'
-    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+Navigate now to the proper directory for the lesson.
 
-    input:
-    set val(name), file(reads) from reads
-
-    output:
-    file "*_fastqc.{zip,html}" into fastqc_results
-
-    script:
-    """
-    fastqc $reads
-    """
-}
+```bash
+cd ~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script
 ```
 
-The `reads` variable is now equal to a channel which contains the reads prefix & paired-end FASTQ data. Therefore, the input declaration has also changed to reflect this by declaring the value `name`. This `name` can be used as a tag for when the pipeline is run. Also, as we are now declaring two inputs the `set` keyword has to be used. Finally, we can specify the container name within the processes as a directive.
+Looking at the directory we type the command:
+
+```bash
+ls -l
+```
+
+And now we see:
+
+```bash
+(eos) ad376@cloudshell:~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script$ ls -l
+total 12
+drwxr-xr-x 2 ad376 ad376 4096 Mar 31 13:28 cwl_tools
+-rw-r--r-- 1 ad376 ad376 1236 Mar 31 13:28 fastqc_multiqc_wf.cwl
+-rw-r--r-- 1 ad376 ad376 3808 Mar 31 13:28 README.md
+```
+
+By convention, the bioinformaticians at `Childrens Hospital of Philadelphia` put their tools, their pieces for a workflow in a subdirectory they name `cwl_tools`.   This is a good convention.
+
+We can see what is put in this directory by typing:
+
+```bash
+ls -l cwl_tools
+```
+
+We see that there are two files:
+
+```bash
+-rw-r--r-- 1 ad376 ad376 1053 Mar 31 13:28 fastqc.cwl
+-rw-r--r-- 1 ad376 ad376 1004 Mar 31 13:28 multiqc.cwl
+```
+
+We can inspect that file either by opening it in an editor or by typing at the terminal
+```bash
+less cwl_tools/fastqc_cwl
+```
+
+Which we see now as:
+
+```bash
+cwlVersion: v1.0
+class: CommandLineTool
+id: fastqc
+requirements:
+  - class: ShellCommandRequirement
+  - class: DockerRequirement
+    dockerPull: 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
+  - class: InlineJavascriptRequirement
+  - class: ResourceRequirement
+    ramMin: ${ return inputs.ram * 1024 }
+    coresMin: $(inputs.cores)
+
+baseCommand: [mkdir]
+arguments:
+  - position: 1
+    shellQuote: false
+    valueFrom: >-
+      $(inputs.outdir)
+  - position: 2
+    shellQuote: false
+    valueFrom: >-
+      && fastqc
+
+inputs:
+  input_reads: { type: 'File[]', inputBinding: {position: 99}, doc: "Input fastq files" }
+  outdir: { type: 'string?', default: "results", inputBinding: { position: 2, prefix: "--outdir"} }
+  noextract: { type: 'boolean?', default: true, inputBinding: { position: 2, prefix: "--noextract"} }
+  cores: { type: 'int?', default: 2 , inputBinding: { position: 2,  prefix: "--threads" } }
+  ram: { type: 'int?', default: 2 }
+outputs:
+  fastqc_results:
+    type: Directory
+    outputBinding:
+      glob: $(inputs.outdir)
+```
+
+We see many of the same pieces.   While I will not go into detail, the point is that the `cwl` script is using the same containers as we did in the `nextflow` script.
+
+We can also inspect the `multiqc.cwl` file in that way or in the editor.
+
+### Installing cwltool
+
+In the same way that we installed `nextflow`, we can install `cwltool`.
+
 
 To run the pipeline:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+conda install -c bioconda cwltool -y
 ```
 
-#### Recap
-Here we learnt how use to the [`fromFilePairs`](https://www.nextflow.io/docs/latest/channel.html#fromfilepairs) method to generate a channel for our input data.
+### Executing with cwltool
 
-### e) Operators
-
-Operators are methods that allow you to manipulate & connect channels.
-
-Here we will add a new process `multiqc` & use the [`.collect()`](https://www.nextflow.io/docs/latest/operator.html#collect) operator
-
-Add the following process after `fastqc`:
-```nextflow
-//main.nf
-reads = Channel.fromFilePairs(params.reads, size: 2)
-
-process fastqc {
-
-    tag "$name"
-    publishDir "results", mode: 'copy'
-    container 'pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0'
-
-    input:
-    set val(name), file(reads) from reads
-
-    output:
-    file "*_fastqc.{zip,html}" into fastqc_results
-
-    script:
-    """
-    fastqc $reads
-    """
-}
-process multiqc {
-
-    publishDir "results", mode: 'copy'
-    container 'pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0'
-
-    input:
-    file ('fastqc/*') from fastqc_results.collect()
-
-    output:
-    file "*multiqc_report.html" into multiqc_report
-    file "*_data"
-
-    script:
-    """
-    multiqc . -m fastqc
-    """
-}
-```
-
-Here we have added another process `multiqc`. We have used the `collect` operator here so that if `fastqc` ran for more than two pairs of files `multiqc` would collect all of the files & run only once.
-
-The pipeline can be run with the following:
-```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
-```
-
-#### Recap
-Here we learnt how to use operators such as `collect` & connect processes via channels
-
-### f) Configuration
-
-Configuration, such as parameters, containers & resources eg memory can be set in `config` files such as [`nextflow.config`](https://www.nextflow.io/docs/latest/config.html#configuration-file).
-
-For example our `nextflow.config` file might look like this:
-```
-docker.enabled = true
-params.reads = false
-
-process {
-  cpus = 2
-  memory = "2.GB"
-
-  withName: fastqc {
-    container = "pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0"
-  }
-  withName: multiqc {
-    container = "pgc-images.sbgenomics.com/deslattesmaysa2/multiqc:v1.0"
-  }
-}
-```
-
-Here we have enabled docker by default, initialised parameters, set resources & containers. It is best practice to keep these in the `config` file so that they can more easily be set or removed. Containers & `params.reads` can then be removed from `main.nf`.
-
-The pipeline can now be run with the following:
-```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
-```
 
 ## Return to the Agenda
 
