@@ -166,7 +166,7 @@ git clone https://github.com/adeslatt/multiqc-docker.git
 Navigate now to multiqc
 
 ```bash
-cd ../multiqc-docker
+cd multiqc-docker
 ```
 
 And build the image
