@@ -94,14 +94,44 @@ We can also inspect the `multiqc.cwl` file in that way or in the editor.
 
 In the same way that we installed `nextflow`, we can install `cwltool`.
 
+To find the exact command, I typically google `anaconda search packages` and arrive here:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/AnacondaSearchPackages_cwltool1.png">
+
+Next, I get the information on how to install:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/AnacondaSearchPackages_cwltool2.png">
 
 To run the pipeline:
 ```bash
-conda install -c bioconda cwltool -y
+conda install -c conda-forge cwltool -y
+```
+
+We verify the installation with
+
+```bash
+(eos) ad376@cloudshell:~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script$ which cwltool
+/home/ad376/miniconda3/envs/eos/bin/cwltool
 ```
 
 ### Executing with cwltool
 
+Before we can execute, we need to let the tool know where the files are -- they are in fact on Zenodo 
+
+```bash
+wget https://zenodo.org/record/6394912/files/test.20k_reads_1.fastq.gz
+```
+and
+
+```bash
+wget https://zenodo.org/record/6394912/files/test.20k_reads_2.fastq.gz
+```
+
+And now we can execute, we do not need to tell the tool where the containers are because they are specified in the script.
+
+```bash
+(eos) ad376@cloudshell:~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script$ cwltool workflows/fastqc_multiqc_wf.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz
+```
 
 ## Return to the Agenda
 
