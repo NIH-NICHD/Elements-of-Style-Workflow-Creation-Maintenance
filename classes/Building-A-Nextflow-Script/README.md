@@ -1,5 +1,7 @@
 # Building a Nextflow Workflow
 
+<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png">
+
 
 #### Run a container in interactive mode using bash
 
@@ -33,44 +35,36 @@ Next we will run in an interactive mode but mounting our directory
 docker run -it -v $PWD:$PWD -w $PWD pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0 fastqc -h
 ```
 
-In this session, we will use the two Docker images we built in the previous sections and we will how to put these together into a single workflow using the Nextflow workflow language.  Later, we will learn out to put these two Docker images into a single workflow using the CWL or Common Workflow Language.   After the break, we will see how to use these two Docker images to build an application within the CAVATICA environment.
+
+And since the previous less, we actually can run the image we have installed in the same manner
+```bash
+docker run -it -v $PWD:$PWD -w $PWD fastqc fastqc -h
+```
+
+In this session, we will use the two Docker images we built in the previous sections and we will how to put these together into a single workflow using the Nextflow workflow language.  Later, we will learn out to put these two Docker images into a single workflow using the CWL or Common Workflow Language.  
+After the break, we will see how to use these two Docker images to build an application within the CAVATICA environment.
 
 
-* Google Cloud Shell
-* Find packages with Anaconda
-* Create a conda environment
-* Fork a GitHub repository
-* Clone a GitHub repository
-* Use conda to install a standard workflow language `Nextflow`
-* 
-
-<img src="https://github.com/nextflow-io/trademark/blob/master/nextflow2014_no-bg.png">
-
-Tutorial for INCLUDE Workshop, on 31 March 2022, covering Nextflow, containers and CAVATICA
+## Contents
 
 In this tutorial you will learn:
 - [Nextflow](https://www.nextflow.io/) - how to build parallelisable & scalable computational pipelines
 
-## Contents
-
-- [Session 1: Nextflow](#session-1-nextflow)
     - [b) Parameters](#b-parameters)
     - [c) Processes (inputs, outputs & scripts)](#c-processes-inputs-outputs--scripts)
     - [d) Channels](#d-channels)
     - [e) Operators](#e-operators)
     - [f) Configuration](f-configuration)
     
-## Setup
+## In the Google Shell
 
-We are going to use [Google Shell Cloud] to walk through the building of a Nextflow script and in the next session building the containers we used to do so.
+We are going to continue use [Google shell Cloud](https://shell.cloud.google.com/) to walk through the building of a Nextflow script and in the next session building the containers we used to do so.
 
-### Logging into [Google shell Cloud](https://shell.cloud.google.com/)
-
-[Google shell cloud](https://shell.cloud.google.com/) is an ephemeral machine, but has a number of items installed that makes it easier for us to go through this exercise.
+Inside the shell we have the following:
 
 * `Docker` is installed
 
-* `conda` can be installed
+* `conda` has been installed -- which we did in the previous lesson.
 
 * The standard workflow language for Nextflow `nextflow` can be installed
 
@@ -78,8 +72,7 @@ We are going to use [Google Shell Cloud] to walk through the building of a Nextf
 
 ### What is [Docker](https://www.docker.com/) <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/Moby-Logo.png" width=50 align=left>?
 
-Docker is the application we use to build our containerized images.   It turns our code into an image that can be run interactively or be placed upon a virtual machine that we spin up on CAVATICA as part of a workflow.   The logo that is associated with `Docker` is a whale but looks like a containership.   Containers revolutionized the shipping industry by creating a uniform entity that could permits disparate items to be packaged in the same manner allowing devices that do not know what they contain to carry those items.   Much in the same way that `packets` revolutionized communication with the internet.  This is why we concern ourselves with containers. 
-
+Just to recap a bit. Docker is the application we use to build our containerized images.   It turns our code into an image that can be run interactively or be placed upon a virtual machine that we spin up on CAVATICA as part of a workflow.   The logo that is associated with `Docker` is a whale but looks like a containership.   Containers revolutionized the shipping industry by creating a uniform entity that could permits disparate items to be packaged in the same manner allowing devices that do not know what they contain to carry those items.   Much in the same way that `packets` revolutionized communication with the internet.  This is why we concern ourselves with containers. 
 
 ### Install Nextflow
 
@@ -124,9 +117,6 @@ And because we have activated our environment `eos`, you will see that the `next
 /home/adeslat/miniconda3/envs/eos/bin/nextflow
 ```
 
-#### recap
-
-
 ### GitHub Forking and Cloning
 
 Now we are all using command shell, we are working with `conda`, now we need to do some work.   The work we are following will be using `data` from `Zenodo` and the tutorial we are following is on `GitHub`.  The tutorial has code that we will use and build from, so it makes sense for us to get a copy, or `clone` this repository.   We may want to make local changes.  To do this, it is good practices to `Fork` the repository.  So let's all `Fork`.
@@ -146,14 +136,23 @@ Now that you have `forked` this repository, you can clone it.   To clone it go t
 
 Taking the `forked` version I have made into my own repository, we have:
 
+### Cloning the repository
+
+Make sure we are at the root directory
+```bash
+cd ~
+```
+
+And now clone the repository.
+
 ```bash
 git clone https://github.com/adeslatt/Elements-of-Style-Workflow-Creation-Maintenance.git
 ```
 
-Now change into the directory.
+Now change into the directory for this class
 
 ```bash
-cd Elements-of-Style-Workflow-Creation-Maintenance
+cd ~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-Nextflow-Script
 ```
 
 And we can now move into building a `Nextflow` script.
@@ -181,16 +180,6 @@ Okay to recap, what have we done:
 - [Configuration](https://www.nextflow.io/docs/latest/config.html)
 
 
-### a) Installation
-
-Within the Google Cloud Shell we have all but Nextflow available to us.
-
-Conda is installed so we can use the conda install process to install nextflow
-
-```bash
-conda install -c bioconda nextflow
-```
-
 ### b) Parameters
 
 Now that we have Nextflow & Docker installed we're ready to run our first script
@@ -199,17 +188,17 @@ Normally, you begin by creating a file, for our lesson we are going to use a fil
 
 But in general these files are edited with your favorite your favourite code/text editor eg VSCode or vim or emacs
 
-Inspect the file `main.step1.nf`
+Inspect the file `params_reads.nf`
 
 Typing 
 
 ```bash
-less main.step1.nf
+less params_reads.nf
 ```
 
 You see the contents of the file is as follows:
 ```nextflow
-// main.step1.nf
+// params_reads.nf
 params.reads = false
 
 println "My reads: ${params.reads}"
@@ -220,7 +209,7 @@ The second line prints the value of this variable on execution of the pipeline.
 
 We can now run this script & set the value of `params.reads` to one of our FASTQ files in the testdata folder with the following command:
 ```bash
-nextflow run main.step1.nf --reads testdata/test.20k_reads_1.fastq.gz
+nextflow run params_reads.nf --reads testdata/test.20k_reads_1.fastq.gz
 ```
 
 The run returns the name of our file.
@@ -237,9 +226,9 @@ the process [inputs](https://www.nextflow.io/docs/latest/process.html#inputs),
 the process [outputs](https://www.nextflow.io/docs/latest/process.html#outputs)
 and finally the command [script](https://www.nextflow.io/docs/latest/process.html#script).
 
-In our main script we want to add the following:
+Let's look at the next script, `fastqc.nf`, we see the following:
 ```nextflow
-//main.step2.nf
+//fastqc.nf
 reads = file(params.reads)
 
 process fastqc {
@@ -259,11 +248,7 @@ process fastqc {
 }
 ```
 
-This file is also in our repository and we can inspect it from the command line
 
-```bash
-less main.step2.nf
-```
 
 Here we created the variable `reads` which is a `file` from the command line input.
 
@@ -273,10 +258,12 @@ We can then create the process `fastqc` including:
  - the [output](https://www.nextflow.io/docs/latest/process.html#outputs) which is anything ending in `_fastqc.zip` or `_fastqc.html` which will go into a `fastqc_results` channel
  - the [script](https://www.nextflow.io/docs/latest/process.html#script) where we are running the `fastqc` command on our `reads` variable
 
-We can then run our script with the following command:
+We can then run our script with either the following command:
 ```bash
-nextflow run main.step2.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+nextflow run fastqc.nf --reads testdata/test.20k_reads_1.fastq.gz -with-docker fastqc
 ```
+
+or as we noted 
 
 We are using the image I had pushed to the Seven Bridges Image repository -- in the next session I will walk through how that is done.
 
@@ -298,7 +285,7 @@ Here we will use the method [`fromFilePairs`](https://www.nextflow.io/docs/lates
 To do this we will replace the code from [1c](https://github.com/lifebit-ai/jax-tutorial/blob/master/README.md#c-processes-inputs-outputs--scripts) with the following 
 
 ```nextflow
-//main.nf
+//fastqc.nf
 reads = Channel.fromFilePairs(params.reads, size: 2)
 
 process fastqc {
@@ -324,7 +311,7 @@ The `reads` variable is now equal to a channel which contains the reads prefix &
 
 To run the pipeline:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+nextflow run fastqc.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
 #### Recap
@@ -336,9 +323,9 @@ Operators are methods that allow you to manipulate & connect channels.
 
 Here we will add a new process `multiqc` & use the [`.collect()`](https://www.nextflow.io/docs/latest/operator.html#collect) operator
 
-Add the following process after `fastqc`:
+Add the multiqc process after `fastqc`:
 ```nextflow
-//main.nf
+//fastqc_multiqc_wf.nf
 reads = Channel.fromFilePairs(params.reads, size: 2)
 
 process fastqc {
@@ -381,7 +368,7 @@ Here we have added another process `multiqc`. We have used the `collect` operato
 
 The pipeline can be run with the following:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
+nextflow run fastqc_multiqc_wf.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz" -with-docker pgc-images.sbgenomics.com/deslattesmaysa2/fastqc:v1.0
 ```
 
 #### Recap
@@ -409,11 +396,13 @@ process {
 }
 ```
 
+which are in fact the images as I stored them in the CAVATICA repository.
+
 Here we have enabled docker by default, initialised parameters, set resources & containers. It is best practice to keep these in the `config` file so that they can more easily be set or removed. Containers & `params.reads` can then be removed from `main.nf`.
 
 The pipeline can now be run with the following:
 ```bash
-nextflow run main.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
+nextflow run fastqc_multiqc_wf.nf --reads "testdata/test.20k_reads_{1,2}.fastq.gz"
 ```
 
 ## Return to the Agenda
