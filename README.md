@@ -14,11 +14,11 @@ If you have not already done so, [please go ahead and create an account on CAVAT
 
 For today's class, if you have not already done so, let my colleagues know so we can add you to the appropriate billing group.
 
-## Lets Log in straight to CAVATICA
+## Lets Log in straight to [CAVATICA](https://cavatica.sbgenomics.com)
 
-* [Log straight into CAVATICA Step-by-Step and Start a Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/LoggingIntoCAVATICA/README.md)
+* [Step-by-Step Instructions to log into CAVATICA and Start a Notebook](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/classes/LoggingIntoCAVATICA/README.md)
 
-## Logging in From INCLUDE Data Hub
+## Other ways of logging in [INCLUDE Data Hub](https://includedcc.org/)
 
 * [Log into INCLUDE Data Hub](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/LoggingIntoCAVATICAFromINCLUDEDataHub.gif)
 
