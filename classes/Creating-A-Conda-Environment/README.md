@@ -169,6 +169,21 @@ We create an environment as follows:
 conda create -n eos -y
 ```
 
+You can see now that we now have the option to activate the environment
+
+```bash
+#
+# To activate this environment, use
+#
+#     $ conda activate eos
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) ad376@cloudshell:~$ conda create -n eos -y^C
+```
+
 Now that we have created a clean environment, we follow the directions and activate the environment, that is enter this new clean environment.
 
 ```bash
@@ -178,7 +193,8 @@ conda activate eos
 We will see next to our name in the google shell, that it should look something like this:
 
 ```bash
-(eos) adeslat@cloudshell:~$
+(base) ad376@cloudshell:~$ conda activate eos
+(eos) ad376@cloudshell:~$
 ```
 
 The `(eos)` indicating that we are in that environment.
