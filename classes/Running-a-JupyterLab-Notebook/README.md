@@ -16,14 +16,29 @@ Authorize CAVATICA to act on your behalf.
 <img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAGen3WindowNumber2.png">
 
 Arrive at the CAVATICA window - we created a project and an analysis notebook already, you may have to select that project.
-<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALoginDashboardNumber3.png">
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICALoginDashboardNumber3.png" >
 
 ## Fork the GitHub Repository
 
-Fork the [Elements of Style Workflow Creation and Maintenance](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance) repository into your own personal `GitHub` repository.
+We are going to fork the GitHub repository - to do so navigate in your browser to the repository for this course.
+
+Click here [Elements of Style Workflow Creation and Maintenance](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance)
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone1.png">
+
+If you have already made a fork, it would make sense to fetch any upstream changes that may have occured since you last visted.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone3.png">
+
+Next, 
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/GitHubElementsofStyleWorkflowForkClone4.png">
 
 ## Clone the repository in the Jupyterlab terminal window
 
+Return to your CAVATICA Window and go back to your JupyterLab notebook.
+          
 Navigate to the right, select `https` and copy the link to your personal version of the repository.
 
 Navigate to the `JupyterLab` notebook you have opened on `CAVATICA`
