@@ -129,9 +129,24 @@ wget https://zenodo.org/record/6394912/files/test.20k_reads_2.fastq.gz
 
 And now we can execute, we do not need to tell the tool where the containers are because they are specified in the script.
 
+As before we can run the tools separately, before running them together.
+
+First we test out `fastqc`
 ```bash
-(eos) ad376@cloudshell:~/Elements-of-Style-Workflow-Creation-Maintenance/classes/Building-A-CWL-Script$ cwltool workflows/fastqc_multiqc_wf.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz
+cwltool cwl_tools/fastqc.cwl --input_reads test.20k_reads_1.fastq.gz --input_reads test.20k_reads_2.fastq.gz
 ```
+
+And then we test out `multiqc` which uses the output of `fastqc` as its input.
+
+```bash
+cwltool cwl_tools/multiqc.cwl --fastqc_results results
+```
+
+### recap
+
+We saw how to
+* install cwltool
+* run and test fastqc and multiqc separately as wrapped inside the common workflow language
 
 ## Return to the Agenda
 
