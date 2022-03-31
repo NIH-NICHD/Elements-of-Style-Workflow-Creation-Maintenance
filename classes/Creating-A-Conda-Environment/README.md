@@ -85,9 +85,12 @@ ls -l
 
 returns:
 ```bash
-(eos) adeslat@cloudshell:~$ ls -l
-total 221716
--rw-r--r--  1 adeslat adeslat 75660608 Feb 15 19:07 Miniconda3-latest-Linux-x86_64.sh
+/home/ad376
+ad376@cloudshell:~$ ls -l
+total 73892
+-rw-r--r-- 1 ad376 ad376 75660608 Feb 15 19:07 Miniconda3-latest-Linux-x86_64.sh
+-rw-r--r-- 1 ad376 ad376      913 Mar 31 12:34 README-cloudshell.txt
+ad376@cloudshell:~$
 ```
 
 To execute this script now and install the `conda` application, we type:
@@ -99,8 +102,6 @@ bash Miniconda3-latest-Linux-x86_64.sh
 This will return:
 
 ```bash
-(eos) adeslat@cloudshell:~$ bash Miniconda3-latest-Linux-x86_64.sh
-
 Welcome to Miniconda3 py39_4.11.0
 
 In order to continue the installation process, please review the license
@@ -119,13 +120,13 @@ Do you accept the license terms? [yes|no]
 It returns now:
 ```bash
 Miniconda3 will now be installed into this location:
-/home/adeslat/miniconda3
+/home/ad376/miniconda3
 
   - Press ENTER to confirm the location
   - Press CTRL-C to abort the installation
   - Or specify a different location below
 
-[/home/adeslat/miniconda3] >>>
+[/home/ad376/miniconda3] >>>
 ```
 Accept the defaults.
 
@@ -147,7 +148,7 @@ which conda
 
 returns:
 ```bash
-/home/adeslat/miniconda3/condabin/conda
+/home/ad376/miniconda3/condabin/conda
 ```
 ## Creating a clean environment
 
