@@ -143,6 +143,15 @@ exec -l bash
 Now we can see the result:
 
 ```bash
+ad376@cloudshell:~$ exec -l bash
+Welcome to Cloud Shell! Type "help" to get started.
+To set your Cloud Platform project in this session use “gcloud config set project [PROJECT_ID]”
+(base) ad376@cloudshell:~$
+```
+
+And we can see now we have the `conda` application.
+
+```bash
 which conda
 ```
 
