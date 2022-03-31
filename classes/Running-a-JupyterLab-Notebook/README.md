@@ -102,22 +102,59 @@ First we run the JupyterLab notebook which introduces us to some Command Line Fu
 
 ### Open the `1-using-the-command-line.ipynb`
 
-
 Now follow the folder and select the first notebook in the directory, and we will execute all the command lines interactively.
 
-`1-using-the-command-line.ipynb`
+Navigate to the folder on the left:
 
-Note that this notebook had the `python` kernel running, normally we would have executed this in a `bash` kernel.  This Kernel is not yet available on the CAVATICA platform but soon will be.
+* Double click on `Elements-of-Style-Workflow-Creation-Maintenance`
+* Double click on `classes`
+* Double click on `Running-a-JupyterLab-Notebook`
+* Finally, double click on `1-using-the-command-line.ipynb` to open the notebook
 
+Next, clear the outputs and restart the kernel by selecting from the pull down menu under `Kernel`:
 
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook1-CommandLineRestartKernel.png">
 
-## Open the `2-reading-data-and-plotting-in-R.ipynb`
+Confirm your desire to restart the Kernel:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook1-CommandLineKernelRestartConfirm.png">
+
+And we will walk through all the selected commands.
+
+Note that this notebook had the `python` kernel running, normally we would have executed this in a `bash` kernel.  This Kernel is not yet available on the CAVATICA platform but it has been added to the Seven Bridges Team Backlog.
+
+### Open the `2-reading-data-and-plotting-in-R.ipynb`
 
 Next, we will execute the second `jupyterlab` notebook, this one is running the `R` kernel.
 
-Look again at the folders on the left and select the second notebook.
+Look again at the folders on the left and open the second notebook `2-reading-data-and-plotting-in-R.ipynb` by double-clicking on the notebook.
 
-`2-reading-data-and-plotting-in-R.ipynb`
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook2-ReadingDataAndPlottingR.png">
+
+Again, `Restart Kernel and Clear Outputs`.
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook2-RestartKernelAndClearOutputs.png">
+
+Confirm your desire to do so:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook2-RestartKernalConfirmation.png">
+
+This is running the `R` Kernel and as we load the libraries we see that there is a `[*]` inside the brackets.   This indicates that it is executing and looks like this:
+
+<img src="https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/blob/main/assets/CAVATICAJupyterLabNotebook2-RWaitingUntilCompletion.png">
+
+When completed, it will look the `[*]` becomes `[1]`.
+
+## Recap
+
+In this lesson:
+* We logged into CAVATICA
+* We started an interactive analysis with JupyterLab
+* We authenticated with GitHub
+* We executed and saw some Command Line Functions
+* We generated a Volcano Plot in a JupyterLab notebook running an `R` kernel
+
+
 
 ## Return to the Agenda
 
