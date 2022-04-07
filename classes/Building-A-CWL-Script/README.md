@@ -44,7 +44,7 @@ We see that there are two files:
 
 We can inspect that file either by opening it in an editor or by typing at the terminal
 ```bash
-less cwl_tools/fastqc_cwl
+less cwl_tools/fastqc.cwl
 ```
 
 Which we see now as:
