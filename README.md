@@ -69,4 +69,4 @@ Common Workflow script guidance was gratefully received from Miguel Brown at Chi
 ## Citation
 If you use any of the materials of this lesson, please cite as:
 
-Deslattes Mays, Anne 2022. "Elements of Style in Workflow Creation and Maintenance"
+Deslattes Mays, Anne 2022. ["Elements of Style in Workflow Creation and Maintenance"](https://github.com/NIH-NICHD/Elements-of-Style-Workflow-Creation-Maintenance/edit/main/README.md)
