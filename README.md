@@ -65,3 +65,8 @@ Nextflow workflow information and guidance was gratefully received from Phil Pal
 and @cgpu Christina Chatzipantsiou has been my infallible guide.
 
 Common Workflow script guidance was gratefully received from Miguel Brown at Children's Hospital of Philadelphia.
+
+## Citation
+If you use any of the materials of this lesson, please cite as:
+
+Deslattes Mays, Anne 2022. "Elements of Style in Workflow Creation Maintenance"
